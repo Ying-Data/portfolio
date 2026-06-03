@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ying Zhao — Data Analyst · Antwerpen</title>
+<title>Ying Zhao, Data Analyst, Antwerpen</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
 <style>
@@ -76,7 +76,7 @@ img{display:block;max-width:100%}
 .bg-line svg{width:100%;height:100%}
 
 /* ══════════════════════════════════════════════════
-   NAV — always visible, all buttons
+   NAV: always visible, all buttons
    ══════════════════════════════════════════════════ */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);
@@ -118,7 +118,7 @@ nav{
 }
 .hero-inner{max-width:720px;margin:0 auto}
 
-/* photo — person centered */
+/* photo: person centered */
 .hero-photo{
   width:220px;height:220px;border-radius:50%;overflow:hidden;
   margin:0 auto 2rem;
@@ -251,6 +251,8 @@ nav{
 }
 .card-tools{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:auto;padding-top:.8rem}
 .card-tool{font-size:.68rem;font-weight:500;color:var(--text-dim);background:var(--bg);padding:.28rem .65rem;border-radius:60px;border:1px solid var(--border)}
+.card-link{margin-top:1rem;font-size:.8rem;font-weight:600;color:var(--accent-d);width:fit-content}
+.card:hover .card-link{color:var(--accent)}
 
 /* ══════════════════════════════════════════════════
    CONTACT
@@ -330,7 +332,7 @@ footer span{color:var(--accent)}
       <h1 class="hero-name">Ying <span class="accent">Zhao</span></h1>
       <p class="hero-role">Data Analyst · Antwerpen</p>
       <p class="hero-sub">
-        I turn messy datasets into <strong>clear stories</strong> and Power BI dashboards that make teams say <em style="color:var(--accent);font-style:italic">"now I get it."</em> — with a background in international business, 1,000+ hours of hands-on training, and a 2nd-place Accenture Hackathon finish.
+        I turn messy datasets into <strong>clear stories</strong> and Power BI dashboards that make teams say <em style="color:var(--accent);font-style:italic">"now I get it."</em> My background spans international business, 1,000+ hours of hands-on training, and a 2nd-place finish at the Accenture hackathon.
       </p>
       <div class="hero-btns">
         <a href="#work" class="btn-primary">
@@ -358,13 +360,13 @@ footer span{color:var(--accent)}
       <div>
         <div class="about-prose">
           <p>
-            Most companies don't have a data problem — they have a <strong>translation problem</strong>. Numbers pile up in spreadsheets, reports get skimmed and forgotten, and decisions still end up being made on gut feeling.
+            Most companies don't have a data problem; they have a <strong>translation problem</strong>. Numbers pile up in spreadsheets, reports get skimmed and forgotten, and decisions still end up being made on gut feeling.
           </p>
           <p>
             I fix that gap. With <em>Power BI dashboards</em>, <em>automated ETL pipelines</em>, and a knack for asking the right questions, I turn noisy data into the kind of insight that actually changes what a team does on Monday morning.
           </p>
           <p>
-            What makes me different? I've lived on the business side — in supply chain, international trade, and finance — so I don't just build charts. I build the <strong>right</strong> charts, for the <strong>right</strong> audience, with the <strong>right</strong> story attached.
+            What makes me different? I've lived on the business side, in supply chain, international trade, and finance, so I don't just build charts. I build the <strong>right</strong> charts, for the <strong>right</strong> audience, with the <strong>right</strong> story attached.
           </p>
         </div>
       </div>
@@ -407,7 +409,7 @@ footer span{color:var(--accent)}
       <div class="beyond-card">
         <span class="beyond-emoji">🎤</span>
         <h3>Stand-Up Comedy</h3>
-        <p>I believe if you can make a room laugh, you can make a boardroom listen. Comedy taught me timing, reading an audience, and the power of a well-placed punchline — skills that transfer surprisingly well to data presentations.</p>
+        <p>I believe if you can make a room laugh, you can make a boardroom listen. Comedy taught me timing, reading an audience, and the power of a well-placed punchline, all of which transfer surprisingly well to presenting data.</p>
       </div>
 
       <div class="beyond-card">
@@ -419,7 +421,7 @@ footer span{color:var(--accent)}
       <div class="beyond-card">
         <span class="beyond-emoji">🍜</span>
         <h3>Food Explorer</h3>
-        <p>From Antwerpen's hidden gems to street food across continents — I eat with the same curiosity I bring to data. Every dish has a story, a culture, a technique. Finding the best bowl of noodles is basically qualitative research.</p>
+        <p>From Antwerpen's hidden gems to street food across continents, I eat with the same curiosity I bring to data. Every dish has a story, a culture, a technique. Finding the best bowl of noodles is basically qualitative research.</p>
       </div>
 
     </div>
@@ -433,41 +435,43 @@ footer span{color:var(--accent)}
     <h2 class="section-title">Projects that <em>moved the needle.</em></h2>
     <div class="projects-grid">
 
-      <div class="card">
-        <span class="card-tag">E-Commerce</span>
-        <h3>E-Commerce Sales Performance</h3>
-        <p class="card-impact">Analyzed multi-channel sales funnels to surface revenue drivers and underperforming segments — enabling data-backed decisions on pricing, promotions, and inventory allocation.</p>
+      <a class="card" href="https://github.com/Ying-Data/olist-retention-analysis" target="_blank" rel="noopener">
+        <span class="card-tag">E-Commerce · Retention</span>
+        <h3>Olist Customer Retention Analysis</h3>
+        <p class="card-impact">97% of Brazilian e-commerce customers never reorder. I analysed 93,358 buyers and 96,470 delivered orders, found late delivery and order value to be the real levers behind repeat purchase, and sized a R$498K-per-year retention opportunity. Random Forest model, a 3-page Power BI dashboard, and an executive report.</p>
         <div class="card-tools">
-          <span class="card-tool">SQL</span>
           <span class="card-tool">Python</span>
+          <span class="card-tool">scikit-learn</span>
+          <span class="card-tool">Power BI</span>
+          <span class="card-tool">Excel</span>
+        </div>
+        <span class="card-link">View on GitHub</span>
+      </a>
+
+      <a class="card" href="https://github.com/Ying-Data/belgium-real-estate" target="_blank" rel="noopener">
+        <span class="card-tag">Real Estate · ML</span>
+        <h3>Belgium Property Valuation</h3>
+        <p class="card-impact">A fair-value model for 15,254 Immoweb listings that flags over- and under-priced properties. Random Forest regressor (R-squared 0.64), regional price-per-m2 analysis, and a buy-renovate-sell ROI scenario, packaged in a print-ready executive report.</p>
+        <div class="card-tools">
+          <span class="card-tool">Python</span>
+          <span class="card-tool">scikit-learn</span>
+          <span class="card-tool">Power BI</span>
+        </div>
+        <span class="card-link">View on GitHub</span>
+      </a>
+
+      <a class="card" href="https://github.com/Ying-Data/telecalifornia-churn-analysis" target="_blank" rel="noopener">
+        <span class="card-tag">Telecom · Churn</span>
+        <h3>TeleCalifornia Churn Intelligence</h3>
+        <p class="card-impact">A California telecom losing $3.68M to churn. I built a Random Forest model (AUC 0.93) that flags 1,511 at-risk customers before they leave, paired with a 5-page Power BI dashboard and a retention ROI simulator.</p>
+        <div class="card-tools">
+          <span class="card-tool">Python</span>
+          <span class="card-tool">scikit-learn</span>
           <span class="card-tool">Power BI</span>
           <span class="card-tool">DAX</span>
         </div>
-      </div>
-
-      <div class="card">
-        <span class="card-tag">Real Estate</span>
-        <h3>Real Estate Market Dashboard</h3>
-        <p class="card-impact">Built an interactive dashboard tracking price trends, regional demand, and market velocity — giving stakeholders a real-time lens into shifting property dynamics.</p>
-        <div class="card-tools">
-          <span class="card-tool">Power BI</span>
-          <span class="card-tool">SQL</span>
-          <span class="card-tool">Power Query</span>
-          <span class="card-tool">Excel</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <span class="card-tag">Labor Market</span>
-        <h3>AI Job Market Analysis</h3>
-        <p class="card-impact">Scraped and analyzed thousands of job postings to map the most in-demand AI skills, salary bands, and emerging roles — delivering a clear snapshot of the evolving tech hiring landscape.</p>
-        <div class="card-tools">
-          <span class="card-tool">Python</span>
-          <span class="card-tool">Pandas</span>
-          <span class="card-tool">Power BI</span>
-          <span class="card-tool">API Integration</span>
-        </div>
-      </div>
+        <span class="card-link">View on GitHub</span>
+      </a>
 
     </div>
   </div>
