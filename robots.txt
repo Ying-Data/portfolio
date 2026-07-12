@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ying-data.github.io/portfolio/sitemap.xml

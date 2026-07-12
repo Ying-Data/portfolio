@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Ying Zhao | BI &amp; Data Analyst, commercial &amp; supply-chain, Antwerp</title>
-<meta name="description" content="I spent eight years responsible for the number before I built the analytics that move it. BI and Data Analyst in Antwerp and remote, commercial and supply-chain. I read your data the way an owner reads a P&amp;L, money first.">
+<meta name="description" content="BI and Data Analyst in Antwerp and remote. Eight years responsible for the number, now building the analytics that move it. SQL, Power BI, Python, Odoo.">
 <meta name="author" content="Ying Zhao">
 <meta name="theme-color" content="#f4efe7">
 <link rel="canonical" href="https://ying-data.github.io/portfolio/">
@@ -13,17 +13,21 @@
 <meta property="og:url" content="https://ying-data.github.io/portfolio/">
 <meta property="og:title" content="Ying Zhao | BI &amp; Data Analyst, Antwerp and remote">
 <meta property="og:description" content="The analyst who carried the number before she crunched it. Eight years on the commercial side, now building the SQL and the models that move the number.">
-<meta property="og:image" content="https://ying-data.github.io/portfolio/small.png">
+<meta property="og:image" content="https://ying-data.github.io/portfolio/images/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Ying Zhao, BI and Data Analyst. I build the analytics that move the number.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Ying Zhao | BI &amp; Data Analyst, Antwerp and remote">
 <meta name="twitter:description" content="Eight years on the commercial side, now building the analytics that move the number. I read your data the way an owner reads a P&amp;L.">
-<meta name="twitter:image" content="https://ying-data.github.io/portfolio/small.png">
+<meta name="twitter:image" content="https://ying-data.github.io/portfolio/images/og.png">
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23e0712e'/><text x='16' y='23' font-family='Georgia,serif' font-size='19' font-weight='700' fill='white' text-anchor='middle'>Y</text></svg>">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,800;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,800;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,800;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 
 <script type="application/ld+json">
 {
@@ -31,11 +35,12 @@
   "@type": "Person",
   "name": "Ying Zhao",
   "jobTitle": "BI & Data Analyst",
-  "description": "Commercial and supply-chain analyst who builds the SQL and the models. Eight years on the revenue side before analytics.",
+  "description": "Commercial and supply-chain analyst who builds the SQL and the models. Eight years on the revenue side before analytics. Month-end reporting cut from 2 days to 2 hours at an Antwerp accountancy firm.",
   "url": "https://ying-data.github.io/portfolio/",
   "email": "weiying.data@gmail.com",
   "address": { "@type": "PostalAddress", "addressLocality": "Sint-Niklaas", "addressRegion": "Antwerp", "addressCountry": "BE" },
   "knowsLanguage": ["English", "Dutch", "Cantonese"],
+  "knowsAbout": ["Power BI", "SQL", "Python", "Odoo", "ETL", "Data quality", "Financial reporting"],
   "sameAs": ["https://www.linkedin.com/in/weiying-zhao/", "https://github.com/Ying-Data"]
 }
 </script>
@@ -46,14 +51,17 @@
 :root{
   --paper:#f4efe7;
   --paper-deep:#ece4d6;
+  --paper-stage:#e6d9c3;
   --card:#fbf8f1;
   --ink:#232021;
   --muted:#6b635a;
   --line:#ddd3c4;
   --line-soft:#e7ddcd;
   --accent:#e0712e;
-  --accent-d:#bd5c20;
-  --max:1080px;
+  --accent-d:#b4551b;
+  --accent-text:#a04a12; /* small text on cream: passes AA where the brighter accents cannot */
+  --ok:#4a7a4f;
+  --max:1120px;
   --nav-h:62px;
 }
 html{
@@ -67,35 +75,54 @@ body{overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 ::selection{background:var(--accent);color:#fff}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 
 .serif{font-family:'Fraunces',Georgia,serif}
-h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.1;letter-spacing:-.01em;color:var(--ink)}
+h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.12;letter-spacing:-.01em;color:var(--ink)}
+.sec-title{text-wrap:balance}
 
-.skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:#fff;padding:.6rem 1rem;border-radius:4px;z-index:200}
+.skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:#fff;padding:.6rem 1rem;border-radius:4px;z-index:300}
 .skip:focus{left:12px;top:10px}
 
 .wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 clamp(1.2rem,4vw,2.6rem)}
-.section{padding:clamp(3.2rem,7vw,5.6rem) 0;border-top:1px solid var(--line-soft)}
+.section{padding:clamp(3.4rem,7vw,6rem) 0;border-top:1px solid var(--line-soft)}
+
+/* report chrome */
+.masthead{display:flex;flex-wrap:wrap;gap:.35rem 1.4rem;justify-content:center;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.masthead b{color:var(--ink);font-weight:600}
+.rule{border:none;border-top:1px solid var(--line);margin:1.1rem 0}
+.rule-heavy{border:none;border-top:2px solid var(--ink);margin:1.1rem 0}
+.eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.02em;color:var(--muted);margin-bottom:1.1rem}
+.eyebrow .no{font-family:'Fraunces',serif;font-weight:600;color:var(--accent-text);margin-right:.5rem}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.sec-title{font-size:clamp(1.5rem,3.4vw,2.2rem);margin-bottom:.6rem}
+.sec-intro{color:var(--muted);max-width:62ch;margin-bottom:2.4rem;font-size:1rem}
+.stamp{
+  display:inline-block;padding:.34rem .7rem;border:1.5px solid var(--accent-text);border-radius:3px;
+  color:var(--accent-text);font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  transform:rotate(-1.6deg);background:rgba(224,113,46,.05)
+}
 
 /* nav */
 nav{
   position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:100;
   display:flex;align-items:center;justify-content:space-between;
   padding:0 clamp(1.2rem,4vw,2.6rem);
-  background:rgba(244,239,231,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  background:rgba(244,239,231,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
   border-bottom:1px solid transparent;transition:border-color .2s;
 }
 nav.scrolled{border-bottom:1px solid var(--line)}
+#progress{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--accent);transition:none}
 .brand{font-family:'Fraunces',serif;font-weight:600;font-size:1.18rem;letter-spacing:-.01em}
 .brand b{color:var(--accent);font-weight:600}
 .nav-r{display:flex;align-items:center;gap:clamp(.5rem,2vw,1.4rem)}
 .nav-r a.link{font-size:.84rem;font-weight:500;color:var(--muted);padding:.3rem 0;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
 .nav-r a.link:hover{color:var(--ink)}
 .nav-r a.link.active{color:var(--ink);border-bottom-color:var(--accent)}
-.btn-cv{font-size:.82rem;font-weight:600;color:#fff;background:var(--ink);padding:.5rem .85rem;border-radius:3px;display:inline-flex;align-items:center;gap:.4rem;transition:background .15s}
-.btn-cv:hover{background:var(--accent-d)}
+.btn-cv{font-size:.82rem;font-weight:600;color:var(--ink);border:1.5px solid var(--line);padding:.45rem .8rem;border-radius:3px;display:inline-flex;align-items:center;gap:.4rem;transition:border-color .15s,color .15s}
+.btn-cv:hover{border-color:var(--accent);color:var(--accent-d)}
 .btn-cv svg{width:13px;height:13px}
-@media(max-width:760px){.nav-r a.link{display:none}}
+@media(max-width:820px){.nav-r a.link{display:none}}
 
 /* buttons */
 .btn{display:inline-flex;align-items:center;gap:.45rem;font-weight:600;font-size:.92rem;cursor:pointer;border-radius:3px;transition:background .15s,color .15s,border-color .15s}
@@ -106,256 +133,542 @@ nav.scrolled{border-bottom:1px solid var(--line)}
 .tlink{font-weight:600;color:var(--ink);border-bottom:1.5px solid var(--line);padding-bottom:1px;transition:border-color .15s,color .15s}
 .tlink:hover{border-bottom-color:var(--accent);color:var(--accent-d)}
 
-/* eyebrow / section head */
-.eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.02em;color:var(--muted);margin-bottom:1.1rem}
-.eyebrow .no{font-family:'Fraunces',serif;font-weight:600;color:var(--accent);margin-right:.5rem}
-.sec-title{font-size:clamp(1.5rem,3.4vw,2.1rem);margin-bottom:.6rem}
-.sec-intro{color:var(--muted);max-width:60ch;margin-bottom:2.4rem;font-size:1rem}
-
-/* hero: photo on top, centered, in her brand */
-.hero{padding-top:calc(var(--nav-h) + clamp(1.8rem,5vw,3.2rem));padding-bottom:clamp(2rem,4vw,3rem);text-align:center}
-.hero-inner{max-width:740px;margin:0 auto}
+/* cover hero */
+.hero{padding-top:calc(var(--nav-h) + clamp(1.6rem,4.5vw,3rem));padding-bottom:clamp(2rem,4vw,3rem);text-align:center}
+.hero-inner{max-width:780px;margin:0 auto}
 .hero-photo{
-  width:clamp(132px,22vw,170px);height:clamp(132px,22vw,170px);margin:0 auto 1.6rem;
+  width:clamp(128px,20vw,164px);height:clamp(128px,20vw,164px);margin:1.4rem auto 1.6rem;
   border-radius:50%;overflow:hidden;border:3px solid var(--accent);background:var(--paper-deep);
-  box-shadow:0 12px 32px rgba(224,113,46,.18);
 }
-.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:56% 26%}
-.hero-eyebrow{font-size:.82rem;font-weight:600;color:var(--accent);letter-spacing:.01em;margin-bottom:1.1rem}
-h1.hero-title{font-size:clamp(1.95rem,5vw,3.1rem);font-weight:600;margin:0 auto 1.4rem;max-width:16ch}
-.hero-title .line{display:block}
-.hero-title em{font-style:italic;color:var(--accent);font-weight:600}
-.hero-sub{font-size:clamp(1.02rem,1.5vw,1.12rem);color:#3c352e;max-width:56ch;margin:0 auto 2rem}
-.hero-sub b{color:var(--ink);font-weight:600}
-.hero-cta{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.hero h1{font-size:clamp(1.9rem,5vw,3.1rem);font-weight:800}
+.hero h1 .l2 em{font-style:italic;color:var(--accent-d)}
+.hero-sub{color:var(--muted);max-width:56ch;margin:1.3rem auto 0;font-size:1.02rem}
+.hero-proofline{margin:1.5rem auto 0;font-size:.95rem;color:var(--ink)}
+.hero-proofline b{font-family:'Fraunces',serif}
+.hero-cta{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;margin-top:1.9rem}
 
-/* proof band (paid work only) */
-.proof{background:var(--paper-deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line)}
-.stat{background:var(--paper-deep);padding:1.6rem clamp(1rem,2vw,1.5rem)}
-.stat-v{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.5rem,2.6vw,2rem);color:var(--accent);line-height:1.05}
-.stat-l{font-size:.82rem;color:#564e45;margin-top:.5rem;line-height:1.4}
-@media(max-width:780px){.proof-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:440px){.proof-grid{grid-template-columns:1fr}}
+/* financial highlights */
+.highlights{background:var(--paper-deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.hl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border-left:1px solid var(--line);border-right:1px solid var(--line)}
+.hl{background:var(--paper-deep);padding:1.5rem 1.2rem}
+.hl .v{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.5rem,3vw,2rem);color:var(--ink)}
+.hl .v .u{font-size:.62em}
+.hl .l{font-size:.82rem;color:var(--muted);margin-top:.35rem;line-height:1.45}
+@media(max-width:760px){.hl-grid{grid-template-columns:1fr 1fr}}
 
-/* work ledger */
-.row{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(1.2rem,3vw,2.6rem);padding:2rem 0;border-top:1px solid var(--line)}
-.row:first-of-type{border-top:1.5px solid var(--ink)}
-.figure{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.7rem,3.2vw,2.25rem);color:var(--accent);line-height:1.05;margin-bottom:.5rem}
-.figure .small{display:block;font-family:'Inter';font-size:.72rem;font-weight:600;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-top:.5rem}
-.figure .was{color:var(--muted);font-size:.8em;position:relative;white-space:nowrap}
-.figure .was::after{content:"";position:absolute;left:0;right:0;top:54%;height:2px;background:var(--accent);transform:scaleX(1);transform-origin:left}
-.figure .to{color:var(--muted);font-size:.6em;font-style:italic;font-family:'Fraunces',serif;padding:0 .15em}
-.figure .now{color:var(--accent)}
-.tag{font-size:.72rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
-.row h3{font-size:1.18rem;margin:.3rem 0 .7rem}
-.row p{color:#473f37;font-size:.97rem;margin-bottom:.9rem}
-.tools{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.4rem}
-.tool{font-size:.72rem;color:var(--muted);border:1px solid var(--line);border-radius:3px;padding:.18rem .5rem;background:var(--card)}
-@media(max-width:780px){.row{grid-template-columns:1fr;gap:.6rem}}
+/* letter */
+.letter{max-width:660px}
+.letter p{margin-bottom:1.1rem}
+.letter .sign{font-family:'Fraunces',serif;font-style:italic;font-size:1.1rem;margin-top:1.4rem}
 
-/* tier 2 with real dashboard thumbnails */
-.tier-div{margin:3rem 0 .4rem}
-.tier-div h3{font-size:1.15rem;color:var(--ink)}
-.tier-div p{color:var(--muted);font-size:.92rem;max-width:62ch;margin-top:.3rem}
-.row-lite{display:grid;grid-template-columns:.6fr 1.55fr 1fr;gap:clamp(1rem,2.6vw,2rem);padding:1.7rem 0;border-top:1px solid var(--line-soft);align-items:start}
-.row-lite .figure{font-size:1.45rem;color:var(--ink)}
-.row-lite .figure .small{color:var(--muted)}
-.row-lite h4{font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;margin-bottom:.45rem}
-.row-lite p{color:#473f37;font-size:.92rem;margin-bottom:.6rem}
-.thumb{display:block;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--card);transition:border-color .2s,box-shadow .2s}
-.thumb img{width:100%;display:block}
-.thumb cap,.thumb .cap{display:block;font-size:.72rem;color:var(--muted);padding:.45rem .6rem;border-top:1px solid var(--line-soft)}
-.thumb:hover{border-color:var(--accent);box-shadow:0 8px 22px rgba(0,0,0,.06)}
-@media(max-width:820px){.row-lite{grid-template-columns:.6fr 1.6fr}.row-lite .thumb{grid-column:1 / -1;max-width:420px;margin-top:.3rem}}
-@media(max-width:560px){.row-lite{grid-template-columns:1fr;gap:.5rem}}
+/* note 1: reconciliation scrollytell */
+.note1{background:var(--card);border-top:1px solid var(--line)}
+.recon{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(1.4rem,4vw,3.4rem);align-items:start}
+.recon-stage{position:sticky;top:calc(var(--nav-h) + 16px)}
+.ledger{
+  background:var(--paper);border:1px solid var(--line);overflow:hidden;
+  outline:1px solid var(--line-soft);outline-offset:3px
+}
+.ledger-head{display:flex;justify-content:space-between;align-items:center;padding:.65rem .9rem;border-bottom:1px solid var(--line);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.ledger-head .st{color:var(--accent-d)}
+.ledger-cols{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:300px;position:relative}
+.ledger-col{padding:.7rem .7rem 1rem}
+.ledger-col + .ledger-col{border-left:1px dashed var(--line)}
+.ledger-col h3{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.55rem;font-family:'Inter',sans-serif}
+.lrow{
+  display:flex;justify-content:space-between;gap:.5rem;align-items:baseline;
+  font-size:.78rem;padding:.32rem .45rem;border-radius:3px;margin-bottom:.22rem;
+  background:var(--card);border:1px solid transparent;transition:background .3s,border-color .3s,opacity .3s,transform .3s
+}
+.lrow .s{color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lrow .a{font-weight:600;white-space:nowrap}
+.lrow.paper .s::before{content:"";display:inline-block;width:7px;height:7px;border:1.5px solid var(--muted);border-radius:1px;margin-right:.4rem;vertical-align:baseline}
+.lrow.digital .s::before{content:"";display:inline-block;width:7px;height:7px;background:var(--muted);border-radius:50%;margin-right:.4rem;opacity:.6}
+.lrow.matched{background:rgba(74,122,79,.09);border-color:rgba(74,122,79,.35)}
+.lrow.fuzzy{background:rgba(224,113,46,.08);border-color:rgba(224,113,46,.4)}
+.lrow.exception{background:rgba(180,85,27,.1);border-color:var(--accent-d)}
+.lrow.dim{opacity:.28}
+.mlabel{
+  font-size:.64rem;font-weight:600;color:var(--accent-text);letter-spacing:.02em;
+  padding:.05rem .35rem;border:1px solid rgba(224,113,46,.5);border-radius:2px;white-space:nowrap
+}
+.mlabel.ok{color:var(--ok);border-color:rgba(74,122,79,.5)}
+.ledger-foot{display:flex;justify-content:space-between;align-items:center;padding:.6rem .9rem;border-top:1px solid var(--line);font-size:.78rem}
+.ledger-foot .tally{font-weight:700}
+.ledger-foot .tally .num{font-family:'Fraunces',serif}
+.replay{font-size:.78rem;font-weight:600;color:var(--accent-text);border:1.5px solid var(--line);padding:.35rem .7rem;border-radius:3px;transition:border-color .15s}
+.replay:hover{border-color:var(--accent)}
+.recon-report{
+  position:absolute;inset:0;background:var(--card);padding:1rem 1.2rem;opacity:0;pointer-events:none;transition:opacity .45s
+}
+.recon-report.show{opacity:1;pointer-events:auto}
+.recon-report h3{font-family:'Fraunces',serif;font-size:1rem;font-weight:600;margin-bottom:.6rem;letter-spacing:0;text-transform:none;color:var(--ink)}
+/* the report assembles line by line out of the dimmed rows beneath it */
+.recon-report .rrow{opacity:0;transform:translateY(5px);transition:opacity .4s ease,transform .4s ease}
+.recon-report.show .rrow{opacity:1;transform:none}
+.recon-report.show .rrow:nth-child(2){transition-delay:.05s}
+.recon-report.show .rrow:nth-child(3){transition-delay:.15s}
+.recon-report.show .rrow:nth-child(4){transition-delay:.25s}
+.recon-report.show .rrow:nth-child(5){transition-delay:.35s}
+.recon-report.show .rrow:nth-child(6){transition-delay:.5s}
+.tally.tick{animation:tallytick .45s ease}
+@keyframes tallytick{0%{background:rgba(224,113,46,.25)}100%{background:transparent}}
+.rrow{display:flex;justify-content:space-between;font-size:.82rem;padding:.34rem 0;border-bottom:1px solid var(--line-soft)}
+.rrow b{font-weight:600}
+.rrow .num{font-weight:600}
+.rrow.total{border-top:2px solid var(--ink);border-bottom:none;margin-top:.3rem;padding-top:.5rem;font-weight:700}
+.recon-steps{padding-bottom:20vh}
+.step{
+  border-left:2px solid var(--line);padding:.2rem 0 .2rem 1.2rem;margin:0 0 clamp(3rem,18vh,7rem);
+  transition:border-color .3s,opacity .3s;opacity:.45
+}
+.step.active{border-color:var(--accent);opacity:1}
+.step .kicker{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-text);margin-bottom:.4rem}
+.step h3{font-size:1.15rem;margin-bottom:.5rem}
+.step p{font-size:.95rem;color:var(--muted)}
+.step p b{color:var(--ink)}
+.method-name{
+  display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin:1.2rem 0 2rem;font-size:.85rem;font-weight:600
+}
+.method-name .m{border:1.5px solid var(--ink);border-radius:3px;padding:.3rem .7rem}
+.method-name .m i{font-style:normal;color:var(--accent-text);font-family:'Fraunces',serif;margin-right:.3rem}
+@media(max-width:900px){
+  .recon{grid-template-columns:1fr}
+  .recon-stage{top:calc(var(--nav-h) + 8px);z-index:5}
+  .recon-steps{padding-bottom:6vh}
+  .step{margin-bottom:clamp(2.2rem,10vh,4rem)}
+}
 
-/* testimonial */
-.quote{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:6px;padding:1.7rem clamp(1.3rem,3vw,2rem);margin-top:2.4rem}
-.quote p.q{font-family:'Fraunces',serif;font-size:1.18rem;line-height:1.45;color:var(--ink);font-weight:400}
+/* schedules: horizontal rail */
+.rail-sec{overflow:hidden}
+.rail-head{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap}
+.rail-hint{font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:.5rem}
+.rail-hint .bar{display:inline-block;width:60px;height:2px;background:var(--line);position:relative;overflow:hidden;border-radius:2px}
+.rail-hint .bar i{position:absolute;left:0;top:0;bottom:0;width:30%;background:var(--accent);border-radius:2px}
+.rail-outer{
+  margin-top:2rem;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:.6rem;
+  padding-left:calc(max((100vw - var(--max))/2, 0px) + clamp(1.2rem,4vw,2.6rem));
+  padding-right:clamp(1.2rem,4vw,2.6rem);
+  scrollbar-width:none
+}
+.rail-outer::-webkit-scrollbar{display:none}
+.rail{display:flex;gap:clamp(1rem,2.5vw,1.8rem)}
+.panel{
+  flex:0 0 auto;width:min(78vw,560px);background:var(--card);
+  border:1px solid var(--line);border-top:2px solid var(--ink);
+  padding:clamp(1.2rem,2.5vw,1.8rem);display:flex;flex-direction:column;gap:.9rem
+}
+.panel .sched{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-text)}
+.panel .figure{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.5rem,3vw,2rem)}
+.panel .figure .small{display:block;font-family:'Inter',sans-serif;font-weight:500;font-size:.78rem;color:var(--muted);margin-top:.15rem}
+.panel h3{font-size:1.15rem}
+.panel p{font-size:.92rem;color:var(--muted)}
+.panel .prepared{font-size:.74rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.panel .p-foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:.8rem}
+.panel.next-entry{justify-content:center;align-items:center;text-align:center;border-style:dashed;background:transparent}
+.panel.next-entry .figure{color:var(--muted)}
+/* exhibit plates: the dashboards themselves ride the rail as report plates */
+.panel.plate{width:auto;max-width:min(80vw,640px);padding:.7rem;gap:0;justify-content:center}
+/* explicit height + attribute aspect ratio: the rail's width is stable before images load */
+.panel.plate img{display:block;height:clamp(240px,44vh,340px);width:auto;max-width:min(72vw,600px);object-fit:contain;border:1px solid var(--line-soft);background:#fff}
+.panel.plate figcaption{font-size:.72rem;color:var(--muted);padding:.55rem .2rem 0}
+@media (hover:none), (pointer:coarse){
+  .rail .panel{width:82vw}
+  .panel.plate{width:auto}
+}
+
+/* independent opinion */
+.quote{max-width:760px;margin:0 auto;border:1px solid var(--line);border-top:2px solid var(--ink);background:var(--card);padding:clamp(1.4rem,3.5vw,2.2rem)}
+.quote .q{font-family:'Fraunces',serif;font-size:clamp(1.1rem,2.4vw,1.4rem);font-style:italic;line-height:1.5}
 .quote .by{display:flex;align-items:center;gap:.6rem;margin-top:1.1rem;flex-wrap:wrap}
-.quote .by .name{font-weight:600}
-.quote .by .role{color:var(--muted);font-size:.88rem}
-.li{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:3px;background:#0a66c2;transition:transform .15s}
-.li:hover{transform:translateY(-1px)}
-.li svg{width:13px;height:13px;fill:#fff}
-.quote details{margin-top:1rem}
-.quote summary{cursor:pointer;color:var(--accent-d);font-weight:600;font-size:.88rem;list-style:none;display:inline-flex;align-items:center;gap:.4rem}
-.quote summary::-webkit-details-marker{display:none}
-.quote summary::after{content:"+";font-family:'Fraunces',serif;font-size:1.05rem;line-height:1;display:inline-block;transition:transform .15s}
-.quote details[open] summary::after{transform:rotate(45deg)}
-.quote details .full{margin-top:1rem;color:#473f37;font-size:.96rem}
-.quote details .full p{margin-bottom:.7rem}
+.quote .name{font-weight:700}
+.quote .role{color:var(--muted);font-size:.88rem}
+.quote .li svg{width:16px;height:16px;fill:var(--muted);transition:fill .15s}
+.quote .li:hover svg{fill:var(--accent-d)}
+.quote details{margin-top:1rem;border-top:1px solid var(--line-soft);padding-top:1rem}
+.quote summary{cursor:pointer;font-weight:600;font-size:.9rem;color:var(--accent-text)}
+.quote .full p{margin-top:.9rem;font-size:.95rem;color:var(--muted)}
 
-/* about (text only; photo lives in hero) */
-.about-body{max-width:64ch}
-.about-body p{margin-bottom:1.1rem;color:#3c352e}
-.about-body p b{color:var(--ink);font-weight:600}
-.method{margin:1.8rem 0;border-top:1px solid var(--line)}
-.method-h{font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;margin:1.2rem 0 .9rem;display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap}
-.method-h .mn{font-size:.74rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);font-family:'Inter'}
-.step{display:grid;grid-template-columns:auto 1fr;gap:.8rem;padding:.6rem 0;border-top:1px solid var(--line-soft)}
-.step .si{font-family:'Fraunces',serif;font-weight:600;color:var(--accent);font-size:1.05rem}
-.step p{font-size:.94rem;color:#473f37}
-.method-foot{margin-top:.9rem;font-size:.92rem;color:var(--ink);font-weight:500}
-.creds{font-size:.86rem;color:var(--muted);margin-top:1.4rem;padding-top:1.1rem;border-top:1px solid var(--line-soft)}
-.anchors{font-size:.9rem;color:#473f37;margin-top:1rem}
-.anchors b{color:var(--ink)}
+/* the presenter */
+.presenter{background:linear-gradient(180deg,var(--paper) 0%,var(--paper-stage) 18%,var(--paper-stage) 82%,var(--paper) 100%)}
+.filmstrip{
+  display:flex;gap:clamp(.8rem,2vw,1.4rem);margin:2.2rem 0 2.6rem;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:.5rem;scrollbar-width:none
+}
+.filmstrip::-webkit-scrollbar{display:none}
+.filmstrip .frame{flex:0 0 clamp(320px,36vw,480px);min-width:0}
+@media (hover:none), (pointer:coarse){
+  .filmstrip .frame{flex-basis:78vw}
+}
+.frame{
+  position:relative;background:var(--card);border:1px solid var(--line);overflow:hidden;
+  aspect-ratio:3/2;display:flex;align-items:flex-end
+}
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.frame .fcap{position:relative;z-index:2;width:100%;font-size:.74rem;color:var(--muted);padding:.6rem .7rem;background:linear-gradient(transparent,rgba(251,248,241,.94) 38%)}
+.scenes{max-width:640px}
+.scene{margin-bottom:1.6rem}
+.scene .k{font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;margin-bottom:.3rem}
+.scene p{color:var(--muted);font-size:.98rem}
+.scene p b{color:var(--ink)}
+.gapchart{max-width:640px;margin:2.4rem 0 .6rem}
+.gapchart .gc-title{font-size:.85rem;font-weight:600;margin-bottom:1rem}
+.gbar{margin-bottom:1rem}
+.gbar .gl{display:flex;justify-content:space-between;font-size:.8rem;color:var(--muted);margin-bottom:.3rem}
+.gbar .gl .num{font-weight:700;color:var(--ink)}
+.gbar .track{height:14px;background:var(--card);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.gbar .fill{height:100%;width:0;background:var(--accent);border-radius:2px}
+.gbar.g1 .fill{background:var(--muted)}
+.gapchart .src{font-size:.74rem;color:var(--muted);margin-top:.6rem}
 
-/* beyond */
-.beyond-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0}
-.bcard{padding:1.4rem clamp(1rem,2vw,1.6rem);border-left:1px solid var(--line-soft)}
-.bcard:first-child{padding-left:0;border-left:none}
-.bcard h3{font-size:1.05rem;margin-bottom:.55rem}
-.bcard p{font-size:.92rem;color:#473f37}
-@media(max-width:760px){.beyond-grid{grid-template-columns:1fr}.bcard{border-left:none;border-top:1px solid var(--line-soft);padding-left:0;padding-right:0}.bcard:first-child{border-top:none}}
+/* objections reconciled */
+.obj-table{border:1px solid var(--line);border-top:2px solid var(--ink);overflow:hidden;background:var(--card)}
+.obj-row{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1.25fr);gap:0;border-bottom:1px solid var(--line-soft)}
+.obj-row:last-child{border-bottom:none}
+.obj-row > div{padding:1rem 1.1rem}
+.obj-row .doubt{color:var(--muted);font-size:.92rem}
+.obj-row .doubt b{color:var(--ink);display:block;margin-bottom:.2rem;font-size:.95rem}
+.obj-row .vs{display:flex;align-items:center;justify-content:center;padding:0 .2rem}
+.obj-row .vs .mlabel{transform:rotate(0)}
+.obj-row .answer{font-size:.92rem;border-left:1px dashed var(--line)}
+.obj-row .answer b{font-family:'Fraunces',serif}
+@media(max-width:760px){
+  .obj-row{grid-template-columns:1fr}
+  .obj-row .vs{justify-content:flex-start;padding:0 1.1rem}
+  .obj-row .answer{border-left:none;padding-top:.2rem}
+}
+
+/* facts block */
+.facts{background:var(--paper-deep);border:1px solid var(--line);border-top:2px solid var(--ink);padding:clamp(1.2rem,3vw,1.8rem);position:relative}
+.facts h2{font-size:1.05rem;margin-bottom:1rem}
+.facts dl{display:grid;grid-template-columns:max-content 1fr;gap:.45rem 1.2rem;font-size:.9rem}
+.facts dt{font-weight:700;color:var(--muted);white-space:nowrap}
+.facts dd{margin:0}
+.copyfacts{position:absolute;top:1rem;right:1rem;font-size:.75rem;font-weight:600;border:1.5px solid var(--line);border-radius:3px;padding:.3rem .6rem;color:var(--muted);transition:border-color .15s,color .15s}
+.copyfacts:hover{border-color:var(--accent);color:var(--accent-d)}
+@media(max-width:640px){.facts dl{grid-template-columns:1fr}.facts dt{margin-top:.4rem}}
+
+/* NL block */
+.nl-block{max-width:660px;border-left:3px solid var(--accent);padding-left:1.3rem}
+.nl-block h2{font-size:1.05rem;margin-bottom:.6rem}
+.nl-block .stamp{margin-bottom:.8rem}
+.nl-block p{font-size:.98rem;color:var(--muted)}
+.nl-block p b{color:var(--ink)}
 
 /* measured */
-.measured{background:var(--paper-deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.m-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:1.6rem;border:1px solid var(--line)}
-.m-card{background:var(--paper-deep);padding:1.4rem}
-.m-v{font-family:'Fraunces',serif;font-weight:600;font-size:1.7rem;color:var(--ink);line-height:1}
-.m-l{font-size:.8rem;color:#564e45;margin-top:.5rem}
-.m-l .tagk{font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);display:block;margin-bottom:.2rem}
-.m-note{font-size:.82rem;color:var(--muted);margin-top:1rem;max-width:64ch}
-@media(max-width:680px){.m-grid{grid-template-columns:1fr}}
+.measured{background:var(--paper-deep)}
+.m-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.m-card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:1.3rem}
+.m-v{font-family:'Fraunces',serif;font-weight:600;font-size:1.7rem}
+.m-l{font-size:.82rem;color:var(--muted);margin-top:.4rem;line-height:1.45}
+.m-l .tagk{display:block;font-weight:700;color:var(--ink)}
+.m-note{font-size:.85rem;color:var(--muted);margin-top:1.4rem;max-width:70ch}
+@media(max-width:760px){.m-grid{grid-template-columns:1fr}}
 
 /* contact */
-.contact-body{max-width:60ch;color:#3c352e}
-.contact-body p{margin-bottom:1rem}
-.poles{font-size:.95rem;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:6px;padding:1.1rem 1.2rem;margin:1.4rem 0}
-.contact-cta{display:flex;gap:.8rem;flex-wrap:wrap;align-items:center;margin-top:1.4rem}
-.contact-cta .more{display:flex;gap:1.2rem;flex-wrap:wrap}
-.contact-cta .more a{font-size:.9rem;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:1px}
-.contact-cta .more a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.contact-body{max-width:660px}
+.contact-body p{margin-bottom:1.1rem}
+.poles{border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:4px;background:var(--card);padding:1rem 1.2rem;font-size:.95rem;margin:1.4rem 0}
+.contact-cta{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;margin-top:1.8rem}
+.contact-cta .more{display:flex;gap:1.1rem;font-size:.9rem}
+.contact-cta .more a{color:var(--muted);border-bottom:1.5px solid var(--line);transition:color .15s,border-color .15s}
+.contact-cta .more a:hover{color:var(--accent-d);border-color:var(--accent)}
+.cta-note{font-size:.82rem;color:var(--muted);margin-top:.8rem}
 
-footer{padding:2.2rem 0 3rem;border-top:1px solid var(--line);color:var(--muted);font-size:.84rem}
+/* footer + closing entry */
+footer{border-top:2px solid var(--ink);padding:1.6rem 0 2.2rem;font-size:.85rem;color:var(--muted)}
+.close-row{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:1rem}
+.close-row .cl{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+#closeBooks{font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;color:var(--ink);border-bottom:2px solid var(--accent);padding-bottom:1px}
+#closeBooks:hover{color:var(--accent-d)}
+#closeBooks:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
-/* larger tap targets on touch screens (Apple HIG) */
-@media(max-width:760px){
-  .tlink,.contact-cta .more a{display:inline-block;padding:.4rem 0}
-  .quote summary{padding:.4rem 0}
-  .li{width:30px;height:30px}
-  .li svg{width:15px;height:15px}
+/* easter egg overlay */
+.egg{border:none;background:transparent;padding:0;margin:auto;max-width:min(540px,92vw);width:100%}
+.egg::backdrop{background:rgba(244,239,231,.97)}
+.egg-inner{max-width:480px;width:100%;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:2rem;box-shadow:0 24px 60px -24px rgba(35,32,33,.35)}
+.egg-inner h3{font-size:1.2rem;margin-bottom:1.1rem}
+.egg-line{display:flex;justify-content:space-between;font-size:.9rem;padding:.45rem 0;border-bottom:1px solid var(--line-soft)}
+.egg-line .num{font-weight:600}
+.egg-line.total{border-top:2px solid var(--ink);border-bottom:none;font-weight:700;margin-top:.4rem;padding-top:.6rem}
+.egg-note{font-size:.9rem;color:var(--muted);margin-top:1.2rem;font-style:italic;font-family:'Fraunces',serif}
+.egg-close{margin-top:1.4rem}
+
+/* reveal primitives: content is ALWAYS visible without JS or motion; JS only adds animation */
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important}
 }
-
-/* ===== motion, gated on .motion (added only when motion is allowed) ===== */
-.motion .reveal{opacity:0;transform:translateY(14px)}
-.reveal.in{opacity:1;transform:none;transition:opacity .5s ease,transform .5s ease}
-.motion .stat{opacity:0;transform:translateY(10px)}
-.stat.in{opacity:1;transform:none;transition:opacity .5s ease,transform .5s ease}
-.stat:nth-child(2){transition-delay:.07s}
-.stat:nth-child(3){transition-delay:.14s}
-.stat:nth-child(4){transition-delay:.21s}
-
-/* hero photo gentle entrance */
-.motion .hero-photo{opacity:0;animation:photoin .6s .05s cubic-bezier(.22,1,.36,1) forwards}
-@keyframes photoin{from{opacity:0;transform:scale(.93)}to{opacity:1;transform:none}}
-
-/* headline comic timing: setup, beat, punchline lands */
-.motion .hero-title .line{opacity:0;transform:translateY(12px)}
-.motion .hero-title .line-1{animation:land .55s .2s cubic-bezier(.22,1,.36,1) forwards}
-.motion .hero-title .line-2{animation:land .55s .8s cubic-bezier(.22,1,.36,1) forwards}
-.motion .hero-title .line-2 em{display:inline-block;opacity:0;animation:punch .5s 1.15s cubic-bezier(.34,1.56,.64,1) forwards}
-@keyframes land{to{opacity:1;transform:none}}
-@keyframes punch{0%{opacity:0;transform:translateY(6px) scale(.95)}60%{opacity:1;transform:translateY(0) scale(1.07)}100%{opacity:1;transform:none}}
-
-/* operator before/after: the strike draws in on scroll (static strike without motion) */
-.motion .figure .was::after{transform:scaleX(0)}
-.motion .row.in .figure .was::after{transform:scaleX(1);transition:transform .55s .15s cubic-bezier(.22,1,.36,1)}
-
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal,.stat,.hero-photo,.hero-title .line,.hero-title em{opacity:1!important;transform:none!important}.figure .was::after{transform:scaleX(1)!important}}
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-
-<nav id="nav">
+<nav id="nav" aria-label="Main">
   <a class="brand" href="#top">Ying Zhao<b>.</b></a>
   <div class="nav-r">
-    <a class="link" href="#work">Work</a>
-    <a class="link" href="#about">About</a>
-    <a class="link" href="#beyond">Beyond</a>
+    <a class="link" href="#about">The letter</a>
+    <a class="link" href="#note1">Note 1</a>
+    <a class="link" href="#work">The work</a>
+    <a class="link" href="#beyond">The presenter</a>
     <a class="link" href="#contact">Contact</a>
     <a class="btn-cv" href="CV_Ying_Zhao.pdf" download>
-      <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
-      Download CV
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 20h16"/></svg>
+      CV
     </a>
   </div>
+  <div id="progress" aria-hidden="true"></div>
 </nav>
 
 <main id="main">
 
-<!-- HERO -->
-<header class="section hero" id="top">
+<!-- COVER -->
+<header class="hero" id="top">
   <div class="wrap hero-inner">
-    <div class="hero-photo"><img src="small.png" alt="Ying Zhao" width="170" height="170"></div>
-    <p class="hero-eyebrow">BI &amp; Data Analyst, commercial and supply-chain. Antwerp and remote.</p>
-    <h1 class="hero-title">
-      <span class="line line-1">I spent eight years responsible for the number.</span>
-      <span class="line line-2">Now I build the analytics that <em>move it.</em></span>
+    <p class="masthead"><b>Ying Zhao</b> <span>BI &amp; Data Analyst</span> <span>Sint-Niklaas / Antwerp</span> <span>Annual review, 2026</span></p>
+    <div class="hero-photo"><picture>
+      <source srcset="images/portrait.webp" type="image/webp">
+      <img src="images/portrait.jpg" alt="Ying Zhao" width="328" height="328" fetchpriority="high">
+    </picture></div>
+    <h1>
+      <span class="l1">I spent eight years responsible for the number.</span><br>
+      <span class="l2">Now I build the analytics that <em>move it.</em></span>
     </h1>
-    <p class="hero-sub">Most analyst pages open with a dashboard. Mine opens with the decision: what are you trying to do, and what is it worth? Then I build the query, the model, the report, and the one-line reason a number moved. I carried a <b class="num">EUR 2M</b> client book at <b>95% retention</b> before analytics, so I read your data the way an owner reads a P&amp;L, money first.</p>
+    <p class="hero-sub">Most analyst pages open with a dashboard. Mine opens with the decision. This page is set like the reports I deliver: every figure real, every claim reconciled, one recommendation at the end.</p>
+    <p class="hero-proofline num">Latest delivery: a month-end reporting cycle at CN Consult, cut from <b>2 days</b> to <b>2 hours</b>.</p>
     <div class="hero-cta">
-      <a class="btn btn-ink" href="#work">See the line items</a>
-      <a class="btn btn-line" href="CV_Ying_Zhao.pdf" download>Download CV</a>
+      <a class="btn btn-ink" href="mailto:weiying.data@gmail.com?subject=A%20question%20my%20reports%20keep%20dodging">Send me the question your reports keep dodging</a>
+      <a class="btn btn-line" href="#note1">Read Note 1</a>
     </div>
   </div>
 </header>
 
-<!-- PROOF BAND (paid work only) -->
-<section class="proof" aria-label="Results from paid work">
-  <div class="wrap">
-    <div class="proof-grid">
-      <div class="stat reveal"><div class="stat-v num">EUR 2M</div><div class="stat-l">Client book I held at 95% retention, eight years on the commercial side</div></div>
-      <div class="stat reveal"><div class="stat-v num">+40%</div><div class="stat-l">EU revenue I helped grow, before I moved into analytics</div></div>
-      <div class="stat reveal"><div class="stat-v num">2 days to 2 hours</div><div class="stat-l">Month-end reporting I rebuilt at CN Consult, in SQL and Power BI</div></div>
-      <div class="stat reveal"><div class="stat-v num">200+ hrs / mo</div><div class="stat-l">Manual data-checking I gave back to a team at Spinewise</div></div>
+<!-- FINANCIAL HIGHLIGHTS -->
+<section class="highlights" aria-label="Financial highlights">
+  <div class="wrap" style="padding-top:clamp(2rem,4vw,3rem);padding-bottom:clamp(2rem,4vw,3rem)">
+    <p class="eyebrow" style="margin-bottom:1.4rem"><span class="no">F01 to F04</span>Findings, before anything else</p>
+    <div class="hl-grid">
+      <div class="hl"><div class="v num">EUR 2M</div><div class="l">Client book I held at 95% retention, eight years on the commercial side</div></div>
+      <div class="hl"><div class="v num">+40%</div><div class="l">EU revenue I helped grow, before I moved into analytics</div></div>
+      <div class="hl"><div class="v num"><span class="was">2 days</span> to 2 hours</div><div class="l">Month-end reporting I rebuilt at CN Consult, in SQL and Power BI</div></div>
+      <div class="hl"><div class="v num">200+ <span class="u">hrs/mo</span></div><div class="l">Manual data-checking I gave back to a team at Spinewise</div></div>
     </div>
   </div>
 </section>
 
-<!-- WORK -->
-<section class="section" id="work">
+<!-- LETTER FROM THE OPERATOR -->
+<section class="section" id="about">
   <div class="wrap">
-    <p class="eyebrow"><span class="no">01</span>The work</p>
-    <h2 class="sec-title">Real cycles cut, then the projects that show how I think</h2>
-    <p class="sec-intro">Two tiers, labelled honestly. First, paid work where I cut real cycles for real teams. Then projects I ran on public data with no brief from anyone, so you can see how I think when nobody hands me the question already framed.</p>
+    <p class="eyebrow"><span class="no">01</span>Letter from the operator</p>
+    <h2 class="sr-only">Letter from the operator</h2>
+    <div class="letter">
+      <p>You are reading this because you need reporting that people act on, and most of what you have seen is either a strong analyst who cannot hold a room, or a strong presenter whose numbers do not survive a second question.</p>
+      <p>For eight years I was the person on the hook for the number: a <b class="num">EUR 2M</b> client book held at <b>95% retention</b> while I helped grow EU revenue <b>40%</b>, across sales, supply chain and trade finance. Then I moved inside the machine, into a Belgian accountancy practice, and got tired of waiting on other people's reports. So I learned it myself: SQL, Python, Power BI, and the discipline to publish only numbers I can defend.</p>
+      <p>Most analysts learn the model first and then look for a business to point it at. I did it the other way round. That is the harder order to fake, and the one that needs less ramp time from you.</p>
+      <p class="sign">Ying Zhao, Sint-Niklaas</p>
+    </div>
+  </div>
+</section>
+<!-- NOTE 1: THE TWO-HOUR REPORT -->
+<section class="section note1" id="note1">
+  <div class="wrap">
+    <p class="eyebrow"><span class="no">Note 1</span>The Two-Hour Report</p>
+    <h2 class="sec-title">Two systems disagreed about the same invoices. I built the report that settled it.</h2>
+    <p class="sec-intro">At CN Consult, an Antwerp accountancy practice, paper invoices lived in ExpertM and digital invoices lived in Odoo. Two systems, one set of money, and a BTW deadline that does not wait. Below is the matching logic, performed on recreated data. Scroll, or run it yourself.</p>
+    <div class="method-name" aria-label="Method: Reconcile, Reduce, Read">
+      <span style="color:var(--muted);font-weight:600">The method, named:</span>
+      <span class="m"><i>1</i>Reconcile</span>
+      <span class="m"><i>2</i>Reduce</span>
+      <span class="m"><i>3</i>Read</span>
+    </div>
 
-    <!-- Tier 1: paid -->
-    <article class="row reveal">
-      <div>
-        <div class="figure"><span class="was num">2 days</span><span class="to">to</span><span class="now num">2 hours</span><span class="small">CN Consult, 2024 to 2025</span></div>
-        <span class="tag">Paid &middot; BI &amp; reporting &middot; ERP migration</span>
+    <div class="recon">
+      <div class="recon-stage">
+        <div class="ledger" id="ledger" aria-label="Invoice reconciliation demonstration, recreated data">
+          <div class="ledger-head"><span>Invoice match, month-end</span><span class="st stamp" style="transform:none;padding:.2rem .5rem">Recreated data</span></div>
+          <div class="ledger-cols" id="ledgerCols">
+            <div class="ledger-col">
+              <h3>ExpertM, paper</h3>
+              <div class="lrow paper" data-m="e1"><span class="s">Van Den Broeck BV</span><span class="a num">1.240,00</span></div>
+              <div class="lrow paper" data-m="e2"><span class="s">Callebaut Kantoor NV</span><span class="a num">386,50</span></div>
+              <div class="lrow paper" data-m="f1"><span class="s">Mertens &amp; Zonen</span><span class="a num">2.178,00</span></div>
+              <div class="lrow paper" data-m="e3"><span class="s">Drukkerij Peeters</span><span class="a num">92,34</span></div>
+              <div class="lrow paper" data-m="f2"><span class="s">DE WITTE LOGISTICS</span><span class="a num">4.560,00</span></div>
+              <div class="lrow paper" data-m="x1"><span class="s">Cash, no reference</span><span class="a num">150,00</span></div>
+              <div class="lrow paper" data-m="e4"><span class="s">Verhuur Depot Noord</span><span class="a num">780,00</span></div>
+              <div class="lrow paper" data-m="f3"><span class="s">Janssens Catering</span><span class="a num">318,45</span></div>
+            </div>
+            <div class="ledger-col">
+              <h3>Odoo, digital</h3>
+              <div class="lrow digital" data-m="e1"><span class="s">Van Den Broeck BV</span><span class="a num">1.240,00</span></div>
+              <div class="lrow digital" data-m="f2"><span class="s">De Witte Logistics BV</span><span class="a num">4.560,00</span></div>
+              <div class="lrow digital" data-m="e2"><span class="s">Callebaut Kantoor NV</span><span class="a num">386,50</span></div>
+              <div class="lrow digital" data-m="f1"><span class="s">Mertens en Zonen BVBA</span><span class="a num">2.178,00</span></div>
+              <div class="lrow digital" data-m="x2"><span class="s">Duplicate entry 8841</span><span class="a num">92,34</span></div>
+              <div class="lrow digital" data-m="e3"><span class="s">Drukkerij Peeters</span><span class="a num">92,34</span></div>
+              <div class="lrow digital" data-m="f3"><span class="s">Janssens Catering, 12 Mar</span><span class="a num">318,45</span></div>
+              <div class="lrow digital" data-m="e4"><span class="s">Verhuur Depot Noord</span><span class="a num">780,00</span></div>
+            </div>
+            <div class="recon-report" id="reconReport" aria-hidden="true">
+              <h3>Month-end match report, one page</h3>
+              <div class="rrow"><span>Matched exactly</span><span class="num">4 pairs, 2.498,84</span></div>
+              <div class="rrow"><span>Matched with a documented reason</span><span class="num">3 pairs, 7.056,45</span></div>
+              <div class="rrow"><span>Exceptions for a human decision</span><span class="num">2 items, 242,34</span></div>
+              <div class="rrow"><span>Unexplained difference</span><span class="num">0,00</span></div>
+              <div class="rrow total"><span>Time to this page</span><span class="num">2 hours, was 2 days</span></div>
+              <p style="font-size:.78rem;color:var(--muted);margin-top:.8rem">Every line above traces to a source row. The exceptions are the point: a good match report shows its residue instead of hiding it.</p>
+            </div>
+          </div>
+          <div class="ledger-foot">
+            <span class="tally">Unmatched: <span class="num" id="tally">16</span></span>
+            <button class="replay" id="replayBtn" type="button">Run the match again</button>
+          </div>
+        </div>
+        <p style="font-size:.76rem;color:var(--muted);margin-top:.7rem">All suppliers and amounts are fabricated. The client's figures stay confidential; the logic is the real thing.</p>
       </div>
-      <div>
-        <h3>Monday decisions instead of Wednesday ones</h3>
-        <p>A month-end reporting cycle that used to block the weekly call now lands the same morning, because the SQL and the Power BI model were built once instead of rebuilt every cycle. I also ran the functional analysis for the Odoo ERP migration, mapping the real process before the data, so the system served the work rather than the other way around.</p>
-        <div class="tools"><span class="tool">SQL</span><span class="tool">Power BI</span><span class="tool">Odoo ERP</span><span class="tool">functional analysis</span></div>
-      </div>
-    </article>
 
-    <article class="row reveal">
-      <div>
-        <div class="figure"><span class="now num">200+</span> <span class="small" style="display:inline">hrs / month back</span><span class="small">Spinewise, internship</span></div>
-        <span class="tag">Paid &middot; Data quality &amp; ETL</span>
+      <div class="recon-steps" id="reconSteps">
+        <div class="step" data-step="0">
+          <p class="kicker">Step 1, the problem</p>
+          <h3>Two systems, one set of money</h3>
+          <p>Paper invoices were keyed into <b>ExpertM</b>. Digital invoices flowed into <b>Odoo</b>. Every month they disagreed: same suppliers spelled three ways, duplicates, a payment with no reference. Finding out why took <b>two days</b> of side-by-side checking.</p>
+        </div>
+        <div class="step" data-step="1">
+          <p class="kicker">Step 2, reconcile</p>
+          <h3>Exact matches first, no judgment calls</h3>
+          <p>Reference, supplier and amount agree on both sides: matched and set aside. This clears most of the volume in seconds and, more importantly, gets it out of the way of the rows that need attention.</p>
+        </div>
+        <div class="step" data-step="2">
+          <p class="kicker">Step 3, reconcile the hard rows</p>
+          <h3>Fuzzy matches, each with its reason on the label</h3>
+          <p>The remainder pairs on rules a reviewer can audit: <b>same amount, supplier name variant</b>. <b>Same amount, date shifted</b>. Nothing matches silently; every pairing carries the reason it was allowed.</p>
+        </div>
+        <div class="step" data-step="3">
+          <p class="kicker">Step 4, reduce</p>
+          <h3>What is left is the real work</h3>
+          <p>A cash payment with no reference and a duplicate entry stay in the <b>exception queue</b>, flagged for a human decision. A reconciliation that claims one hundred percent is hiding something. This one shows its residue.</p>
+        </div>
+        <div class="step" data-step="4">
+          <p class="kicker">Step 5, read</p>
+          <h3>One page a partner reads in a minute</h3>
+          <p>The output is not a spreadsheet, it is a decision: what matched, what matched with a reason, what needs you, and a difference of <b>0,00</b> once the exceptions are resolved. The cycle that took two days now takes <b>two hours</b>, and the checking became repeatable instead of heroic.</p>
+        </div>
       </div>
-      <div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULES: THE WORK -->
+<section class="section rail-sec" id="work">
+  <div class="wrap rail-head">
+    <div>
+      <p class="eyebrow"><span class="no">02</span>Schedules to the accounts</p>
+      <h2 class="sec-title">The work, one page each</h2>
+      <p class="sec-intro" style="margin-bottom:0">Paid work first, then three self-directed projects on public data, labelled honestly. Each is written the way I report: the decision, the number, the limit.</p>
+    </div>
+    <p class="rail-hint" aria-hidden="true"><span class="bar"><i id="railProg"></i></span></p>
+  </div>
+  <div class="rail-outer" id="railOuter" tabindex="0" role="region" aria-label="The work, horizontal scroll">
+    <div class="rail" id="rail">
+      <article class="panel">
+        <p class="sched">Schedule A, paid work</p>
+        <div class="figure num">200+ hrs/mo<span class="small">Spinewise, internship</span></div>
         <h3>A month of capacity, handed back</h3>
-        <p>Python and SQL data-quality checks caught the errors a team was finding by hand, after the damage, one spreadsheet at a time. That gave back more than 200 hours a month. A reworked ETL ran 40% faster, so the data was ready when the decision was, not the morning after.</p>
-        <div class="tools"><span class="tool">Python</span><span class="tool">SQL</span><span class="tool">ETL</span></div>
-      </div>
-    </article>
+        <p>Python and SQL data-quality checks caught the errors a team was finding by hand, after the damage, one spreadsheet at a time. More than 200 hours a month came back, and a reworked ETL ran 40% faster, so the data was ready when the decision was.</p>
+        <p class="prepared">Prepared with: Python, SQL, ETL</p>
+        <div class="p-foot"><span style="font-size:.78rem;color:var(--muted)">Dashboards confidential, figures verified</span></div>
+      </article>
+      <article class="panel">
+        <p class="sched">Schedule B, self-directed</p>
+        <div class="figure num">~R$498K<span class="small">modelled opportunity</span></div>
+        <h3>97% of buyers ordered only once, and what that is worth</h3>
+        <p>Only 3% of this marketplace's buyers ever came back. I found the two levers that move repeat purchase, late delivery and order value, then sized the prize: lifting repeat rate from 3% to 6% is worth about R$498K, a modelled estimate with assumptions shown.</p>
+        <p class="prepared">Prepared with: Python, Random Forest, Power BI</p>
+        <div class="p-foot"><a class="tlink" href="https://github.com/Ying-Data/olist-retention-analysis" target="_blank" rel="noopener">See the repo</a></div>
+      </article>
+      <figure class="panel plate"><img src="images/ex-olist-1.webp" alt="Olist retention Power BI dashboard, executive overview" width="756" height="427"><figcaption>Exhibit B.1, executive overview, Power BI, built by me</figcaption></figure>
+      <figure class="panel plate"><img src="images/ex-olist-2.webp" alt="Olist delivery and review analysis dashboard" width="756" height="423"><figcaption>Exhibit B.2, the delivery lever: late orders and review scores</figcaption></figure>
+      <figure class="panel plate"><img src="images/ex-olist-3.webp" alt="Olist repeat purchase model dashboard" width="756" height="428"><figcaption>Exhibit B.3, the model behind the R$498K estimate</figcaption></figure>
+      <article class="panel">
+        <p class="sched">Schedule C, self-directed</p>
+        <div class="figure num">$3.68M<span class="small">AUC 0.93 model</span></div>
+        <h3>Putting a number on revenue at risk</h3>
+        <p>Churn had already cost $3.68M in customer revenue. The model I built ranks current customers by churn risk, so a retention team works the highest-risk accounts first instead of spraying offers across the whole base.</p>
+        <p class="prepared">Prepared with: Python, Power BI, churn modelling</p>
+        <div class="p-foot"><a class="tlink" href="https://github.com/Ying-Data/telecalifornia-churn-analysis" target="_blank" rel="noopener">See the repo</a></div>
+      </article>
+      <figure class="panel plate"><img src="images/ex-tc-1.webp" alt="TeleCalifornia churn dashboard, executive overview" width="605" height="340"><figcaption>Exhibit C.1, executive overview, Power BI, built by me</figcaption></figure>
+      <figure class="panel plate"><img src="images/ex-tc-2.webp" alt="TeleCalifornia churn drivers dashboard" width="605" height="339"><figcaption>Exhibit C.2, why customers leave: churn drivers</figcaption></figure>
+      <figure class="panel plate"><img src="images/ex-tc-3.webp" alt="TeleCalifornia revenue at risk dashboard" width="605" height="326"><figcaption>Exhibit C.3, the $3.68M, traced revenue at risk</figcaption></figure>
+      <figure class="panel plate"><img src="images/ex-tc-4.webp" alt="TeleCalifornia churn risk model dashboard" width="605" height="339"><figcaption>Exhibit C.4, the AUC 0.93 risk model, validated</figcaption></figure>
+      <figure class="panel plate"><img src="images/ex-tc-5.webp" alt="TeleCalifornia retention simulator dashboard" width="605" height="339"><figcaption>Exhibit C.5, the retention simulator a manager can drive</figcaption></figure>
+      <article class="panel">
+        <p class="sched">Schedule D, self-directed</p>
+        <div class="figure num">R&sup2; 0.64<span class="small">screening tool</span></div>
+        <h3>A 30-second screen on a Belgian asking price</h3>
+        <p>Across 15,254 listings, a model that flags likely over and under-priced homes. It explains a little under two-thirds of price variation, so I use it as a fast first-pass filter, not as an appraisal. Owning the limit is the point.</p>
+        <p class="prepared">Prepared with: Python, Random Forest, Power BI</p>
+        <div class="p-foot"><a class="tlink" href="https://github.com/Ying-Data/belgium-real-estate" target="_blank" rel="noopener">See the repo</a></div>
+      </article>
+      <figure class="panel plate"><img src="images/ex-be-1.webp" alt="Belgium property market overview dashboard" width="756" height="426"><figcaption>Exhibit D.1, market overview, Power BI, built by me</figcaption></figure>
+      <figure class="panel plate"><img src="images/ex-be-2.webp" alt="Belgium regional price analysis dashboard" width="756" height="428"><figcaption>Exhibit D.2, regional analysis: the Brussels premium</figcaption></figure>
+      <figure class="panel plate"><img src="images/ex-be-3.webp" alt="Belgium valuation gap dashboard" width="756" height="423"><figcaption>Exhibit D.3, the valuation gap: flagged over and under-priced homes</figcaption></figure>
+      <figure class="panel plate"><img src="images/ex-be-4.webp" alt="Belgium executive report page" width="756" height="1065"><figcaption>Exhibit D.4, the one-page executive report</figcaption></figure>
+      <article class="panel next-entry" aria-label="Next project placeholder">
+        <div class="figure serif">Next entry</div>
+        <p>The ledger stays open. The next project posts here.</p>
+      </article>
+    </div>
+  </div>
+</section>
 
-    <!-- Testimonial -->
-    <figure class="quote reveal">
-      <p class="q">"She built a data analytics project for me, and the result said everything. The insights were sharp and genuinely useful, and the work had a personality of its own. Even when she doubts herself, what she ships refuses to be mediocre."</p>
+<!-- THE PRESENTER -->
+<section class="section presenter" id="beyond">
+  <div class="wrap">
+    <p class="eyebrow"><span class="no">03</span>The presenter</p>
+    <h2 class="sec-title">I build the analysis and I present it myself. Nobody translates for me.</h2>
+    <p class="sec-intro">The part of BI nobody screens for is the moment the analyst has to stand up and make a room act. I trained that part deliberately, on real stages, in a country that was new to me. The photos below are from Clusity's Summer Gathering, the women-in-tech community's five-year celebration, where I was one of nine keynote speakers. My talk, "Both.", makes the case that the analyst who can read the room and read the data is the rare, useful one.</p>
+
+    <div class="filmstrip" id="filmstrip" tabindex="0" role="region" aria-label="Speech photos, horizontal scroll">
+      <figure class="frame"><img src="images/sp-event.webp" alt="Ying delivering a keynote at Clusity's Summer Gathering, the audience seen from behind" width="1300" height="866"><figcaption class="fcap">Keynote at Clusity's Summer Gathering, delivering "Both."</figcaption></figure>
+      <figure class="frame"><img src="images/sp-smile.webp" alt="Ying smiling while making a point during her talk" loading="lazy" width="1300" height="866"><figcaption class="fcap">One beat before the punchline</figcaption></figure>
+      <figure class="frame"><img src="images/sp-precise.webp" alt="Ying making a precise gesture while speaking" loading="lazy" width="1300" height="866"><figcaption class="fcap">The point, made precisely</figcaption></figure>
+      <figure class="frame"><img src="images/sp-open.webp" alt="Ying speaking with both hands open, mid-explanation" loading="lazy" width="1300" height="866"><figcaption class="fcap">Making the case, no slides between us</figcaption></figure>
+    </div>
+
+    <div class="scenes">
+      <div class="scene"><p class="k">Scene one. I could barely hold my notes.</p>
+      <p>My first Toastmasters evening in Belgium: new country, second language, a room of strangers. I kept going back. My coach tells the rest of that story below, in his own words.</p></div>
+      <div class="scene"><p class="k">Scene two. The club put me in charge of its voice.</p>
+      <p>A year later I was elected <b>VP of Public Relations for Toastmasters Belgium</b>: running the club's messaging, and spending evenings helping other nervous people make one clear point to a room. That is most of what BI actually is once the SQL runs.</p></div>
+      <div class="scene"><p class="k">Scene three. The stage changed how I work.</p>
+      <p>Stand-up taught me the discipline a dashboard never will: <b>cut what does not land and say the one thing that does</b>, in words a tired person gets the first time. Bomb on stage and you know instantly. Ship a report nobody reads and you find out in three months. I prefer the honest feedback loop.</p></div>
+    </div>
+
+    <div class="gapchart" id="gapchart">
+      <p class="gc-title">From my signature speech, "Both.": why the person presenting the data matters</p>
+      <div class="gbar g1"><div class="gl"><span>Facial recognition error rate, lighter-skinned men</span><span class="num">0.8%</span></div><div class="track"><div class="fill" data-w="2.3"></div></div></div>
+      <div class="gbar g2"><div class="gl"><span>Error rate, darker-skinned women</span><span class="num">34.7%</span></div><div class="track"><div class="fill" data-w="100"></div></div></div>
+      <p class="src">Gender Shades study (Buolamwini and Gebru, MIT). The gap is who was in the training data, and who was in the room when it was signed off. Empathy and analysis are not rivals. You need both.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INDEPENDENT OPINION -->
+<section class="section" id="opinion">
+  <div class="wrap">
+    <p class="eyebrow"><span class="no">04</span>Reference, on the record</p>
+    <h2 class="sr-only">Reference</h2>
+    <figure class="quote">
+      <p class="q">"When I met Ying, she trembled before she spoke. One year later, I watched her deliver a speech to several hundred people, steady enough to compete for an eloquence title. I have rarely seen anyone climb that fast."</p>
       <figcaption class="by">
         <span class="name">Panda Lokhat</span>
         <a class="li" href="https://www.linkedin.com/in/pandologie/" target="_blank" rel="noopener" aria-label="Panda Lokhat on LinkedIn">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
         </a>
-        <span class="role">Founder of Pandologie, rhetoric and public affairs coach, Brussels</span>
+        <span class="role">Founder of Pandologie, rhetoric and public affairs coach, Brussels. He both coached my speaking and commissioned a data project.</span>
       </figcaption>
       <details>
         <summary>Read Panda's full reference</summary>
@@ -369,135 +682,105 @@ footer{padding:2.2rem 0 3rem;border-top:1px solid var(--line);color:var(--muted)
         </div>
       </details>
     </figure>
-
-    <!-- Tier 2: self-directed, with real dashboard thumbnails -->
-    <div class="tier-div reveal">
-      <h3>How I think when nobody hands me a brief</h3>
-      <p>Three projects on public data. Not client work, and labelled as such. Each one starts from a decision someone would actually have to make, then earns its way to the number. The dashboards below are the real ones I built.</p>
-    </div>
-
-    <article class="row-lite reveal">
-      <div class="figure num">~R$498K<span class="small">modelled opportunity</span></div>
-      <div>
-        <h4>97% of buyers ordered only once, and what that is worth</h4>
-        <p>Only 3% of this marketplace's buyers ever came back. I found the two levers that move repeat purchase, late delivery and order value, then sized the prize: lifting the repeat rate from 3% to 6% is worth about R$498K in additional revenue, a modelled estimate with the assumptions shown.</p>
-        <div class="tools"><span class="tool">Python</span><span class="tool">Random Forest</span><span class="tool">Power BI</span></div>
-        <a class="tlink" href="https://github.com/Ying-Data/olist-retention-analysis" target="_blank" rel="noopener">See the repo</a>
-      </div>
-      <a class="thumb" href="https://github.com/Ying-Data/olist-retention-analysis" target="_blank" rel="noopener" aria-label="Olist retention dashboard, opens the repo">
-        <img src="images/olist.png" alt="Olist retention Power BI dashboard, executive overview" loading="lazy">
-        <span class="cap">Olist retention dashboard, Power BI</span>
-      </a>
-    </article>
-
-    <article class="row-lite reveal">
-      <div class="figure num">$3.68M<span class="small">AUC 0.93 model</span></div>
-      <div>
-        <h4>Putting a number on revenue at risk</h4>
-        <p>Churn had already cost $3.68M in customer revenue. The model I built and validated ranks current customers by risk and surfaces the roughly 1,500 most likely to leave next, so a retention team works the highest-risk accounts first instead of spraying offers across the whole base.</p>
-        <div class="tools"><span class="tool">Python</span><span class="tool">Power BI</span><span class="tool">churn modelling</span></div>
-        <a class="tlink" href="https://github.com/Ying-Data/telecalifornia-churn-analysis" target="_blank" rel="noopener">See the repo</a>
-      </div>
-      <a class="thumb" href="https://github.com/Ying-Data/telecalifornia-churn-analysis" target="_blank" rel="noopener" aria-label="TeleCalifornia churn dashboard, opens the repo">
-        <img src="images/telecalifornia.png" alt="TeleCalifornia churn Power BI dashboard, executive overview" loading="lazy">
-        <span class="cap">TeleCalifornia churn dashboard, Power BI</span>
-      </a>
-    </article>
-
-    <article class="row-lite reveal">
-      <div class="figure num">R&sup2; 0.64<span class="small">screening tool</span></div>
-      <div>
-        <h4>A 30-second screen on a Belgian asking price</h4>
-        <p>Across 15,254 listings, a model that flags likely over and under-priced homes. It explains a little under two-thirds of price variation, so I use it as a fast first-pass filter to shortlist what is worth a closer look, not as an appraisal. Owning the limit is the point.</p>
-        <div class="tools"><span class="tool">Python</span><span class="tool">Random Forest</span><span class="tool">Power BI</span></div>
-        <a class="tlink" href="https://github.com/Ying-Data/belgium-real-estate" target="_blank" rel="noopener">See the repo</a>
-      </div>
-      <a class="thumb" href="https://github.com/Ying-Data/belgium-real-estate" target="_blank" rel="noopener" aria-label="Belgium valuation dashboard, opens the repo">
-        <img src="images/belgium.png" alt="Belgium property valuation Power BI dashboard, market overview" loading="lazy">
-        <span class="cap">Belgium valuation dashboard, Power BI</span>
-      </a>
-    </article>
   </div>
 </section>
-
-<!-- ABOUT -->
-<section class="section" id="about">
+<!-- OBJECTIONS, RECONCILED -->
+<section class="section" id="objections">
   <div class="wrap">
-    <p class="eyebrow"><span class="no">02</span>How I think</p>
-    <div class="about-body">
-      <p>For eight years I was the person on the hook for the number. In international business, across sales, supply chain, trade and finance, I carried a <b class="num">EUR 2M</b> client book at <b>95% retention</b> and helped grow EU revenue by <b>40%</b>. That is where I learned how a business actually makes money, which question is worth asking, and why a metric moved.</p>
-      <p>Then I got tired of waiting on other people's reports, so I went and built the skill myself. Most analysts learn the model first and then look for a business to point it at. I did it the other way round, business first and model second, which is the harder order to fake and the one that needs less ramp time.</p>
-
-      <div class="method">
-        <div class="method-h"><span class="mn">My method</span> Question to Decision</div>
-        <div class="step"><span class="si num">1</span><p>Start from your business question and the person on your team who has to act on it.</p></div>
-        <div class="step"><span class="si num">2</span><p>Model only what that decision needs, nothing built to impress.</p></div>
-        <div class="step"><span class="si num">3</span><p>Build the SQL and the Power BI once, and build it right, so your team gets a refresh, not a rebuild.</p></div>
-        <div class="step"><span class="si num">4</span><p>Hand back a recommendation in plain language a non-technical manager can act on without me in the room.</p></div>
-        <p class="method-foot">The tool is table stakes. What you hire me for is the recommendation at the end.</p>
+    <p class="eyebrow"><span class="no">05</span>Objections, reconciled</p>
+    <h2 class="sec-title">The doubts you should have, run through the same matching engine</h2>
+    <p class="sec-intro">A reconciliation that hides its exceptions is lying. Same rule applies to a candidate. Here are the four objections a sensible hiring manager raises about me, matched against the record.</p>
+    <div class="obj-table">
+      <div class="obj-row">
+        <div class="doubt"><b>"A career switcher is a junior risk."</b>Two years of hands-on analytics is two years.</div>
+        <div class="vs"><span class="mlabel ok">reconciled</span></div>
+        <div class="answer">The eight years were not a detour, they were the domain training: a <b class="num">EUR 2M</b> client book at 95% retention, accountable for the number every quarter. You are not hiring two years of experience. You are hiring eight years of knowing which question matters, plus the SQL to answer it.</div>
       </div>
-
-      <p class="creds">The certifications, for the box-tickers: BeCode AI and ML bootcamp (1,000+ hours), AWS Cloud Practitioner, 2nd at the Accenture hackathon (MySQL to Tableau), BA International Business (Coventry, UK). Real, and the part of the page that matters least.</p>
-      <p class="anchors"><b>BI &amp; Data Analyst.</b> Based in Sint-Niklaas, Antwerp on-site and Belgium remote, eligible to work in Belgium. English and Dutch professional, Cantonese native.</p>
+      <div class="obj-row">
+        <div class="doubt"><b>"Portfolio projects are student projects."</b>Everyone has a churn model on Kaggle data.</div>
+        <div class="vs"><span class="mlabel ok">reconciled</span></div>
+        <div class="answer">Paid work leads this page: a month-end cycle cut from <b>2 days to 2 hours</b> at CN Consult, <b>200+ hours a month</b> handed back at Spinewise. The public-data projects sit second and are labelled as such. Two tiers, no inflation.</div>
+      </div>
+      <div class="obj-row">
+        <div class="doubt"><b>"Analysts cannot present to stakeholders."</b>The report will be right and nobody will act on it.</div>
+        <div class="vs"><span class="mlabel ok">reconciled</span></div>
+        <div class="answer">I was elected to run communications for <b>Toastmasters Belgium</b> and I have delivered a speech to several hundred people. The one-page report in Note 1 is what my reporting looks like. The presenting is not a promise, it is a practiced skill with witnesses.</div>
+      </div>
+      <div class="obj-row">
+        <div class="doubt"><b>"Her French is missing."</b>Some Belgian teams need it.</div>
+        <div class="vs"><span class="mlabel">exception, stated</span></div>
+        <div class="answer">True, and I will not pretend otherwise: <b>English fluent, Dutch professional, Cantonese native, no French.</b> If your stakeholders work in French, I am the wrong hire and we both save an interview. Every other exception on this page gets the same honesty.</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- BEYOND -->
-<section class="section" id="beyond">
+<!-- THE FACTS -->
+<section class="section" id="facts">
   <div class="wrap">
-    <p class="eyebrow"><span class="no">03</span>Beyond the numbers</p>
-    <h2 class="sec-title">Why my numbers get acted on</h2>
-    <p class="sec-intro">The part that makes the analytics land is trained, not a personality quirk. Here is where.</p>
-    <div class="beyond-grid">
-      <div class="bcard reveal">
-        <h3>I do stand-up comedy</h3>
-        <p>On a stage, to strangers who will not pretend to laugh. It is the same muscle that turns a dashboard into a decision: read the room, cut what does not land, say the one thing that does in words a tired person gets the first time. Bomb on stage and you find out instantly. Ship a report nobody reads and you find out in three months.</p>
-      </div>
-      <div class="bcard reveal">
-        <h3>Toastmasters, VP of PR</h3>
-        <p>I run public relations for Toastmasters Belgium, so I spend my evenings helping nervous people make a clear point to a room. That is most of what BI actually is once the SQL runs: getting a non-technical manager to see the thing and act on it.</p>
-      </div>
-      <div class="bcard reveal">
-        <h3>I chase good food</h3>
-        <p>Mostly noodles, across whichever city will have me. Same instinct as the work: go find the real thing, ignore the version that just looks good in the photo.</p>
-      </div>
+    <p class="eyebrow"><span class="no">06</span>The facts, for forwarding</p>
+    <div class="facts">
+      <button class="copyfacts" id="copyFacts" type="button">Copy this block</button>
+      <h2>Ying Zhao, BI &amp; Data Analyst</h2>
+      <dl id="factsList">
+        <dt>Location</dt><dd>Sint-Niklaas. Antwerp on-site, Belgium remote. Eligible to work in Belgium.</dd>
+        <dt>Tools</dt><dd>SQL, Power BI, DAX, Power Query, Python (pandas), Excel and VBA, Odoo ERP, ExpertM.</dd>
+        <dt>Proof</dt><dd class="num">Month-end reporting 2 days to 2 hours (CN Consult). 200+ hrs/month saved, ETL 40% faster (Spinewise). EUR 2M book at 95% retention, 8 years commercial.</dd>
+        <dt>Credentials</dt><dd>BeCode AI and ML bootcamp (1,000+ hours), AWS Cloud Practitioner, 2nd at the Accenture hackathon, BA International Business (Coventry, UK).</dd>
+        <dt>Speaking</dt><dd>Keynote speaker, Clusity Summer Gathering 2026 (women in tech). VP of Public Relations, Toastmasters Belgium.</dd>
+        <dt>Languages</dt><dd>English fluent, Dutch professional, Cantonese native, no French.</dd>
+        <dt>Contact</dt><dd>weiying.data@gmail.com &middot; linkedin.com/in/weiying-zhao &middot; github.com/Ying-Data</dd>
+      </dl>
     </div>
   </div>
 </section>
 
-<!-- MEASURED (self-instrumented funnel) -->
+<!-- IN HET KORT (NL) -->
+<!-- NL DRAFT: written by Claude, MUST be reviewed by Ying before go-live -->
+<section class="section" id="nl" lang="nl">
+  <div class="wrap">
+    <p class="eyebrow"><span class="no">07</span>In het kort</p>
+    <div class="nl-block">
+      <span class="stamp">Ontwerp, wacht op review</span>
+      <h2>Voor wie liever Nederlands leest</h2>
+      <p><b>BI &amp; Data Analyst</b> in Sint-Niklaas, beschikbaar in Antwerpen en remote in heel Belgi&euml;. Acht jaar commerci&euml;le ervaring, daarna de overstap naar analytics: SQL, Power BI, Python en Odoo. Bij een Antwerps accountantskantoor bracht ik de maandelijkse rapportering terug van twee dagen naar twee uur. Ik bouw de analyse en presenteer ze zelf, in mensentaal. Mail gerust in het Nederlands: <a class="tlink" href="mailto:weiying.data@gmail.com">weiying.data@gmail.com</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MEASURED -->
 <section class="measured" id="measured">
-  <div class="wrap section" style="border-top:none;padding-top:clamp(3rem,6vw,5rem)">
-    <p class="eyebrow"><span class="no">04</span>This page, measured</p>
+  <div class="wrap section" style="border-top:none">
+    <p class="eyebrow"><span class="no">08</span>This page, measured</p>
     <h2 class="sec-title">An analyst should instrument her own work too</h2>
     <p class="sec-intro">This panel reads from my own privacy-first analytics. Real numbers only. The ones that need a fair sample to mean anything stay private until they have one.</p>
     <div class="m-grid">
-      <div class="m-card"><div class="m-v num" id="m-views">&middot;&middot;&middot;</div><div class="m-l"><span class="tagk">Page views</span>since this version went live</div></div>
+      <div class="m-card"><div class="m-v num" id="m-views">live soon</div><div class="m-l"><span class="tagk">Page views</span>counting from go-live</div></div>
       <div class="m-card"><div class="m-v num"><span id="m-time">0s</span></div><div class="m-l"><span class="tagk">Your time on this page</span>this visit, live</div></div>
       <div class="m-card"><div class="m-v" id="m-first">&middot;</div><div class="m-l"><span class="tagk">First section you opened</span>this visit</div></div>
     </div>
-    <p class="m-note">Built the way I would instrument a client's funnel: one honest metric per card, no vanity numbers, and no conversion rate shown until the sample is large enough to be fair. The page-views figure is live once analytics is connected.</p>
+    <p class="m-note">Built the way I would instrument a client's funnel: one honest metric per card, no vanity numbers, and no conversion rate shown until the sample is large enough to be fair.</p>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section class="section" id="contact">
   <div class="wrap">
-    <p class="eyebrow"><span class="no">05</span>Contact</p>
-    <h2 class="sec-title">Hand me the question you are tired of answering yourself</h2>
+    <p class="eyebrow"><span class="no">09</span>Recommendation</p>
+    <h2 class="sec-title">Send me the question your reports keep dodging</h2>
     <div class="contact-body">
-      <p>Send me the vague business question your dashboards keep dodging: why margin slipped, which customers are about to walk, why month-end still eats a week. I will tell you how I would get from that question to a decision your team can act on, in plain language, before you have committed to anything. You find out how I think before you find out what I cost.</p>
-      <p>The wrong hire means another six months of a month-end that eats two days, while the churn you could have flagged walks out the door uncalled.</p>
+      <p>Why margin slipped. Which customers are about to walk. Why month-end still eats a week. Send the vague version, exactly as it nags you; that is the raw material I work with.</p>
+      <p>You will get back how I would take it from question to decision, in plain language, before you have committed to anything. You find out how I think before you find out what I cost.</p>
       <div class="poles">I am not for teams who want a prettier chart factory. I am for the manager who is tired of being the one every report gets escalated to, and wants someone who reads the business and ships.</div>
       <div class="contact-cta">
-        <a class="btn btn-ink" href="mailto:weiying.data@gmail.com">Email me</a>
+        <a class="btn btn-ink" href="mailto:weiying.data@gmail.com?subject=A%20question%20my%20reports%20keep%20dodging">Send me the question your reports keep dodging</a>
         <div class="more">
           <a href="CV_Ying_Zhao.pdf" download>Download CV</a>
           <a href="https://www.linkedin.com/in/weiying-zhao/" target="_blank" rel="noopener">LinkedIn</a>
           <a href="https://github.com/Ying-Data" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
+      <p class="cta-note">Meanwhile the two-day close keeps eating its two days, and the customers you could have flagged keep leaving before anyone calls them.</p>
     </div>
   </div>
 </section>
@@ -506,50 +789,257 @@ footer{padding:2.2rem 0 3rem;border-top:1px solid var(--line);color:var(--muted)
 
 <footer>
   <div class="wrap">
-    Ying Zhao, BI &amp; Data Analyst. Antwerp and remote, based in Sint-Niklaas, Belgium. Eligible to work in Belgium. English and Dutch professional, Cantonese native. <a class="tlink" href="mailto:weiying.data@gmail.com">weiying.data@gmail.com</a>
+    <div class="close-row">
+      <span class="cl">Closing entry</span>
+      <button id="closeBooks" type="button" aria-haspopup="dialog">Balance the books</button>
+    </div>
+    Ying Zhao, BI &amp; Data Analyst. Antwerp and remote, based in Sint-Niklaas, Belgium. Eligible to work in Belgium. English fluent, Dutch professional, Cantonese native. <a class="tlink" href="mailto:weiying.data@gmail.com">weiying.data@gmail.com</a>
   </div>
 </footer>
 
+<!-- EASTER EGG: closing the books -->
+<dialog class="egg" id="egg" aria-labelledby="eggTitle">
+  <div class="egg-inner">
+    <h3 id="eggTitle">Closing entry, this page</h3>
+    <div class="egg-line"><span>Month-end time, credited back</span><span class="num">2 days per cycle</span></div>
+    <div class="egg-line"><span>Hours returned to the team</span><span class="num">200+ /mo, credited</span></div>
+    <div class="egg-line"><span>Exceptions hidden from you</span><span class="num">0</span></div>
+    <div class="egg-line"><span>Claims on this page without a source</span><span class="num">0</span></div>
+    <div class="egg-line total"><span>Difference</span><span class="num">0,00</span></div>
+    <p class="egg-note">Books closed. The stage is for weekends; the numbers stay balanced either way.</p>
+    <button class="btn btn-line egg-close" id="eggClose" type="button">Reopen the ledger</button>
+  </div>
+</dialog>
+
+<style>
+/* late additions kept next to the code that uses them */
+.was{position:relative;white-space:nowrap}
+html:not(.motion) .hl .was{text-decoration:line-through;text-decoration-color:var(--accent-d);text-decoration-thickness:2px}
+.motion .was::after{content:"";position:absolute;left:0;right:0;top:54%;height:2px;background:var(--accent-d);transform:scaleX(0);transform-origin:left;transition:transform .6s .35s}
+.motion .was.in::after{transform:scaleX(1)}
+.gbar .fill{transition:width 1.1s cubic-bezier(.22,.9,.38,1)}
+/* the ledger must shrink with the viewport: grid items need min-width:0 */
+.ledger-col{min-width:0}
+.lrow{min-width:0}
+.lrow .s{flex:1 1 auto;min-width:0}
+.ledger-head{flex-wrap:wrap;gap:.3rem .6rem}
+@media(max-width:480px){
+  .lrow{font-size:.66rem;padding:.26rem .32rem;flex-wrap:wrap;gap:.25rem}
+  .ledger-col{padding:.5rem .45rem .8rem}
+  .lrow .a{font-size:.68rem}
+  .mlabel{font-size:.56rem;padding:.04rem .28rem}
+  .recon-report{padding:.8rem .7rem}
+  .ledger-foot{flex-wrap:wrap;gap:.5rem}
+}
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
 <script>
 /* To make "Page views" live: create a free GoatCounter account (goatcounter.com),
-   enable public stats, and put your site code below. Until then the card shows a
+   enable public stats, and put the site code below. Until then the card shows a
    quiet placeholder, never a fake number. */
 var ANALYTICS_GOATCOUNTER = "";
 
+/* Runs immediately: this script sits at the end of body, so the DOM is ready and
+   nothing interactive waits for the CDN scripts. Motion arrives separately below. */
 (function(){
   "use strict";
   var motion = document.documentElement.classList.contains('motion');
+  var finePointer = matchMedia('(hover:hover) and (pointer:fine)').matches;
 
+  /* ---------- nav: scrolled state, reading progress, active link ---------- */
   var nav = document.getElementById('nav');
+  var progress = document.getElementById('progress');
   var links = Array.prototype.slice.call(document.querySelectorAll('.nav-r a.link'));
   var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  var navTick = false;
   function onScroll(){
-    if(nav) nav.classList.toggle('scrolled', window.scrollY > 8);
-    var y = window.scrollY + 120, idx = -1;
-    for(var i=0;i<sections.length;i++){ if(sections[i] && sections[i].offsetTop <= y) idx = i; }
-    links.forEach(function(a,i){ a.classList.toggle('active', i===idx); });
+    if(navTick) return; navTick = true;
+    requestAnimationFrame(function(){
+      navTick = false;
+      /* reads first, then writes; rect-based because ScrollTrigger's pin-spacer changes offsetParent */
+      var y = window.scrollY;
+      var max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+      var best = -1, bestTop = -Infinity;
+      for(var i = 0; i < sections.length; i++){
+        if(!sections[i]) continue;
+        var t = sections[i].getBoundingClientRect().top;
+        if(t <= 130 && t > bestTop){ best = i; bestTop = t; }
+      }
+      if(nav) nav.classList.toggle('scrolled', y > 8);
+      if(progress) progress.style.width = (y / max * 100).toFixed(2) + '%';
+      links.forEach(function(a, i){ a.classList.toggle('active', i === best); });
+    });
   }
   window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
 
-  /* reveal on scroll (only matters when motion is on; otherwise content is already visible) */
-  var reveals = document.querySelectorAll('.reveal, .stat');
-  if(motion && 'IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, {threshold:0.14});
-    reveals.forEach(function(el){ io.observe(el); });
-  } else {
-    reveals.forEach(function(el){ el.classList.add('in'); });
+  /* No count-up counters, deliberately: a count-up shows false intermediate values,
+     and every figure on this page arrives already true. The only highlight animation
+     is the strike-through, which performs a real transformation. */
+  /* strike-through on "2 days" */
+  if('IntersectionObserver' in window){
+    var wio = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); wio.unobserve(e.target); } });
+    }, {threshold:.7});
+    document.querySelectorAll('.was').forEach(function(el){ wio.observe(el); });
   }
 
-  /* measured: time on page */
+  /* ---------- Note 1: reconciliation state machine (works without GSAP, IO-driven) ---------- */
+  var LABELS = {
+    e1:'exact', e2:'exact', e3:'exact', e4:'exact',
+    f1:'name variant', f2:'case variant', f3:'date shifted',
+    x1:'no reference', x2:'duplicate'
+  };
+  var report = document.getElementById('reconReport');
+  var tally = document.getElementById('tally');
+  var allRows = Array.prototype.slice.call(document.querySelectorAll('#ledgerCols .lrow'));
+  function label(row, cls){
+    if(row.querySelector('.mlabel')) return;
+    var m = row.getAttribute('data-m');
+    var s = document.createElement('span');
+    s.className = 'mlabel' + (cls === 'matched' ? ' ok' : '');
+    s.textContent = LABELS[m] || '';
+    row.appendChild(s);
+  }
+  function clearRows(){
+    allRows.forEach(function(r){
+      r.classList.remove('matched','fuzzy','exception','dim');
+      var l = r.querySelector('.mlabel'); if(l) l.remove();
+    });
+  }
+  function applyStep(n){
+    if(!report) return;
+    report.classList.toggle('show', n >= 4);
+    report.setAttribute('aria-hidden', n >= 4 ? 'false' : 'true');
+    clearRows();
+    if(n >= 1) allRows.forEach(function(r){ var m = r.getAttribute('data-m'); if(/^e/.test(m)){ r.classList.add('matched'); label(r,'matched'); } });
+    if(n >= 2) allRows.forEach(function(r){ var m = r.getAttribute('data-m'); if(/^f/.test(m)){ r.classList.add('fuzzy'); label(r,'fuzzy'); } });
+    if(n >= 3) allRows.forEach(function(r){
+      var m = r.getAttribute('data-m');
+      if(/^x/.test(m)){ r.classList.add('exception'); label(r,'exception'); }
+      else if(n === 3 && !/^x/.test(m)) r.classList.add('dim');
+    });
+    if(tally){
+      var newTally = n === 0 ? '16' : n === 1 ? '8' : n === 2 ? '2' : '0, exceptions 2';
+      if(tally.textContent !== newTally){
+        tally.textContent = newTally;
+        tally.classList.remove('tick'); void tally.offsetWidth; tally.classList.add('tick');
+      }
+    }
+  }
+  var steps = Array.prototype.slice.call(document.querySelectorAll('#reconSteps .step'));
+  /* scroll-position driven, not IntersectionObserver: a fast scroll or an anchor jump
+     can skip an observer's trigger band, and the ledger must never show a stale state */
+  var lastStep = -2, stepTick = false;
+  function stepScroll(){
+    if(stepTick) return; stepTick = true;
+    requestAnimationFrame(function(){
+      stepTick = false;
+      var line = window.innerHeight * 0.55, cur = -1;
+      for(var i = 0; i < steps.length; i++){
+        if(steps[i].getBoundingClientRect().top < line) cur = i;
+      }
+      if(cur !== lastStep){
+        lastStep = cur;
+        steps.forEach(function(s, i){ s.classList.toggle('active', i === cur); });
+        applyStep(Math.max(0, cur));
+      }
+    });
+  }
+  window.addEventListener('scroll', stepScroll, {passive:true});
+  window.addEventListener('resize', stepScroll, {passive:true});
+  stepScroll();
+  /* replay: the 5-second hallway demo */
+  var replayBtn = document.getElementById('replayBtn');
+  var replayIv = null;
+  if(replayBtn) replayBtn.addEventListener('click', function(){
+    if(replayIv) clearInterval(replayIv);
+    var i = 0; applyStep(0);
+    replayIv = setInterval(function(){
+      i++; applyStep(i);
+      if(i >= 4){ clearInterval(replayIv); replayIv = null; lastStep = -2; }
+    }, motion ? 850 : 350);
+  });
+
+  /* ---------- the rail and the filmstrip travel on their own, left to right ---------- */
+  var railOuter = document.getElementById('railOuter');
+  var railProg = document.getElementById('railProg');
+  if(railOuter) railOuter.addEventListener('scroll', function(){
+    if(!railProg) return;
+    var m = railOuter.scrollWidth - railOuter.clientWidth;
+    if(m > 0) railProg.style.width = (30 + 70 * railOuter.scrollLeft / m) + '%';
+  }, {passive:true});
+
+  /* auto-drift: the strip advances by itself; hovering, touching, scrolling or focusing
+     hands control back to the visitor, then it quietly resumes. It reads left to right,
+     pauses at the end, glides back and starts again. Reduced motion never auto-moves. */
+  function autoDrift(el, speed){
+    if(!el || !motion) return;
+    var pausedUntil = 0, dir = 1, visible = true, hovering = false, last = null;
+    function hold(ms){ pausedUntil = Math.max(pausedUntil, performance.now() + ms); }
+    ['pointerdown','wheel','touchstart','focusin','keydown'].forEach(function(ev){
+      el.addEventListener(ev, function(){ hold(4000); }, {passive:true});
+    });
+    el.addEventListener('pointerenter', function(){ hovering = true; }, {passive:true});
+    el.addEventListener('pointerleave', function(){ hovering = false; hold(700); }, {passive:true});
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){ visible = es[0].isIntersecting; }, {threshold:.12}).observe(el);
+    }
+    /* Two deliberate choices here. The position lives in a float because WebKit rounds
+       scrollLeft to whole pixels, so sub-pixel increments written directly never
+       accumulate. And the loop runs on a timer, not requestAnimationFrame: WebKit
+       parks its render loop when nothing changed visually, which would stall a
+       rAF-chained drift before it ever reaches its first whole pixel. */
+    var pos = null;
+    setInterval(function(){
+      var t = performance.now();
+      if(last === null) last = t;
+      var dt = Math.min(120, t - last); last = t;
+      var max = el.scrollWidth - el.clientWidth;
+      if(visible && !hovering && !document.hidden && max > 10 && t > pausedUntil){
+        if(pos === null || Math.abs(el.scrollLeft - pos) > 2) pos = el.scrollLeft; /* adopt manual scrolls */
+        pos += dir * (dir > 0 ? speed : speed * 2.5) * dt / 1000;
+        pos = Math.max(0, Math.min(max, pos));
+        el.scrollLeft = pos;
+        if(dir > 0 && pos >= max - 1){ dir = -1; hold(1800); }
+        else if(dir < 0 && pos <= 1){ pos = 0; el.scrollLeft = 0; dir = 1; hold(1400); }
+      }
+    }, 33);
+  }
+  autoDrift(railOuter, 46);
+  autoDrift(document.getElementById('filmstrip'), 30);
+  if('IntersectionObserver' in window){
+    var gio = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){
+          document.querySelectorAll('#gapchart .fill').forEach(function(f){ f.style.width = f.getAttribute('data-w') + '%'; });
+          gio.unobserve(e.target);
+        }
+      });
+    }, {threshold:.5});
+    var gc = document.getElementById('gapchart'); if(gc) gio.observe(gc);
+  } else {
+    document.querySelectorAll('#gapchart .fill').forEach(function(f){ f.style.width = f.getAttribute('data-w') + '%'; });
+  }
+
+  /* ---------- facts: copy for forwarding ---------- */
+  var copyBtn = document.getElementById('copyFacts');
+  if(copyBtn) copyBtn.addEventListener('click', function(){
+    var t = 'Ying Zhao, BI & Data Analyst\n';
+    document.querySelectorAll('#factsList dt').forEach(function(dt){
+      t += dt.textContent + ': ' + dt.nextElementSibling.textContent + '\n';
+    });
+    t += 'Portfolio: https://ying-data.github.io/portfolio/';
+    function done(){ copyBtn.textContent = 'Copied'; setTimeout(function(){ copyBtn.textContent = 'Copy this block'; }, 1800); }
+    if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done, function(){});
+  });
+
+  /* ---------- measured panel ---------- */
   var start = Date.now(), tEl = document.getElementById('m-time');
   function fmt(s){ return s < 60 ? s + 's' : Math.floor(s/60) + 'm ' + (s%60) + 's'; }
   if(tEl) setInterval(function(){ tEl.textContent = fmt(Math.round((Date.now()-start)/1000)); }, 1000);
-
-  /* measured: first section opened (real, this visit) */
   var firstEl = document.getElementById('m-first'), firstDone = false;
-  var labels = {work:'Work', about:'About', beyond:'Beyond', contact:'Contact'};
+  var labels = {note1:'Note 1', work:'Schedules', beyond:'The presenter', about:'The letter', contact:'Contact'};
   function markFirst(name){
     if(firstDone || !labels[name]) return; firstDone = true;
     if(firstEl) firstEl.textContent = labels[name];
@@ -558,13 +1048,12 @@ var ANALYTICS_GOATCOUNTER = "";
     a.addEventListener('click', function(){ markFirst((a.getAttribute('href')||'').replace('#','')); });
   });
   if('IntersectionObserver' in window){
-    var so = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if(e.isIntersecting) markFirst(e.target.id); });
-    }, {threshold:0.5});
-    ['work','about','beyond','contact'].forEach(function(id){ var el=document.getElementById(id); if(el) so.observe(el); });
+    /* tall sections never reach 50% visibility; count a section when it crosses the middle band */
+    var so = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting) markFirst(e.target.id); });
+    }, {threshold:0, rootMargin:'-40% 0px -40% 0px'});
+    ['note1','work','beyond','about','contact'].forEach(function(id){ var el = document.getElementById(id); if(el) so.observe(el); });
   }
-
-  /* measured: live page views via GoatCounter public counter (no fake numbers) */
   var vEl = document.getElementById('m-views');
   if(ANALYTICS_GOATCOUNTER){
     var s = document.createElement('script');
@@ -573,11 +1062,58 @@ var ANALYTICS_GOATCOUNTER = "";
     fetch('https://'+ANALYTICS_GOATCOUNTER+'.goatcounter.com/counter/'+encodeURIComponent(location.pathname)+'.json')
       .then(function(r){ return r.ok ? r.json() : Promise.reject(); })
       .then(function(d){ if(vEl && d && d.count) vEl.textContent = String(d.count).trim(); })
-      .catch(function(){ if(vEl) vEl.textContent = 'live soon'; });
-  } else {
-    if(vEl) vEl.textContent = 'live soon';
+      .catch(function(){ /* static 'live soon' already in the HTML; never fake a number */ });
   }
+
+  /* ---------- easter egg: closing the books ---------- */
+  var egg = document.getElementById('egg');
+  var eggBtn = document.getElementById('closeBooks');
+  var eggClose = document.getElementById('eggClose');
+  var lastFocus = null;
+  function openEgg(){
+    lastFocus = document.activeElement;
+    /* native <dialog>: modal focus containment and Escape come for free */
+    if(egg.showModal) egg.showModal(); else egg.setAttribute('open', '');
+    if(motion && typeof gsap !== 'undefined'){
+      /* opacity, not autoAlpha: the close button must stay focusable while fading in */
+      gsap.fromTo('.egg-inner', {y: 26, opacity: 0}, {y: 0, opacity: 1, duration: .4, ease: 'power2.out'});
+      gsap.fromTo('.egg-line, .egg-note', {opacity: 0, x: -12}, {opacity: 1, x: 0, stagger: .22, duration: .35, delay: .25});
+    }
+    eggClose.focus();
+  }
+  function shutEgg(){
+    if(egg.close) egg.close(); else egg.removeAttribute('open');
+    if(lastFocus) lastFocus.focus();
+  }
+  if(eggBtn && egg){
+    eggBtn.addEventListener('click', openEgg);
+    eggClose.addEventListener('click', shutEgg);
+    egg.addEventListener('click', function(e){ if(e.target === egg) shutEgg(); });
+  }
+
+  /* ---------- motion layer: only after the CDN scripts arrive; content never waits for it ---------- */
+  function initMotion(){
+    if(!motion || typeof gsap === 'undefined') return;
+
+    /* No smooth-scroll library, deliberately: Lenis fought every programmatic scroll
+       (anchors, back-forward restore, focus jumps) for a glide this page does not need.
+       Native scroll + the CSS scroll-behavior rule handle anchors. Paper does not glide. */
+
+    /* hero: two beats and the punchline, skipped when scripts arrive late so text a
+       visitor is already reading never vanishes and replays */
+    if(performance.now() < 1200){
+      gsap.timeline({defaults:{ease:'power2.out'}})
+        .from('.hero h1 .l1', {y:22, autoAlpha:0, duration:.5}, .1)
+        .from('.hero h1 .l2', {y:22, autoAlpha:0, duration:.5}, '+=.35')
+        .from('.hero h1 .l2 em', {scale:.55, autoAlpha:0, duration:.42, ease:'back.out(2.4)'}, '-=.05');
+    }
+  }
+  (function waitForGsap(n){
+    if(typeof gsap !== 'undefined'){ initMotion(); }
+    else if(n < 100){ setTimeout(function(){ waitForGsap(n + 1); }, 60); }
+  })(0);
 })();
 </script>
+
 </body>
 </html>
