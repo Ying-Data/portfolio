@@ -987,12 +987,16 @@ var ANALYTICS_GOATCOUNTER = "";
 
   /* auto-drift: the strip advances by itself; touching, dragging, scrolling or focusing
      hands control back to the visitor, then it quietly resumes. It reads left to right,
-     pauses at the end, glides back and starts again. Reduced motion never auto-moves.
-     Note: it does NOT pause on hover. On a desktop the cursor naturally rests over the
-     strip, and pausing on hover froze it there (it only ran on touch devices). Only a
-     real interaction pauses it. */
+     pauses at the end, glides back and starts again.
+     It deliberately does NOT gate on prefers-reduced-motion. This is an owner-requested
+     feature, the drift is slow, it pauses on any real interaction, and the strip is fully
+     manually scrollable, so no content is trapped behind the motion. (Reduced-motion was
+     the real reason it looked dead on desktop: that OS setting dropped the whole motion
+     layer, so the drift never started, while phones without the setting worked.)
+     It also does NOT pause on hover: on desktop the cursor rests over the strip, and a
+     hover-pause froze it there. Only a real interaction pauses it. */
   function autoDrift(el, speed){
-    if(!el || !motion) return;
+    if(!el) return;
     var pausedUntil = 0, dir = 1, visible = true, last = null;
     function hold(ms){ pausedUntil = Math.max(pausedUntil, performance.now() + ms); }
     ['pointerdown','wheel','touchstart','focusin','keydown'].forEach(function(ev){
@@ -1012,7 +1016,11 @@ var ANALYTICS_GOATCOUNTER = "";
       if(last === null) last = t;
       var dt = Math.min(120, t - last); last = t;
       var max = el.scrollWidth - el.clientWidth;
-      if(visible && !document.hidden && max > 10 && t > pausedUntil){
+      /* gated only on: the strip is on-screen, it overflows, and the visitor is not
+         mid-interaction. Deliberately NOT gated on document.hidden: a backgrounded tab
+         would freeze it, and that adds nothing for a slow marquee (the browser throttles
+         background timers anyway) while making the behaviour hard to reason about. */
+      if(visible && max > 10 && t > pausedUntil){
         if(pos === null || Math.abs(el.scrollLeft - pos) > 2) pos = el.scrollLeft; /* adopt manual scrolls */
         pos += dir * (dir > 0 ? speed : speed * 2.5) * dt / 1000;
         pos = Math.max(0, Math.min(max, pos));
