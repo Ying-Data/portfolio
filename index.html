@@ -140,7 +140,7 @@ nav.scrolled{border-bottom:1px solid var(--line)}
   width:clamp(128px,20vw,164px);height:clamp(128px,20vw,164px);margin:1.4rem auto 1.6rem;
   border-radius:50%;overflow:hidden;border:3px solid var(--accent);background:var(--paper-deep);
 }
-.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center}
 .hero h1{font-size:clamp(1.9rem,5vw,3.1rem);font-weight:800}
 .hero h1 .l2 em{font-style:italic;color:var(--accent-d)}
 .hero-sub{color:var(--muted);max-width:56ch;margin:1.3rem auto 0;font-size:1.02rem}
@@ -234,10 +234,21 @@ nav.scrolled{border-bottom:1px solid var(--line)}
 .method-name .m{border:1.5px solid var(--ink);border-radius:3px;padding:.3rem .7rem}
 .method-name .m i{font-style:normal;color:var(--accent-text);font-family:'Fraunces',serif;margin-right:.3rem}
 @media(max-width:900px){
-  .recon{grid-template-columns:1fr}
-  .recon-stage{top:calc(var(--nav-h) + 8px);z-index:5}
-  .recon-steps{padding-bottom:6vh}
-  .step{margin-bottom:clamp(2.2rem,10vh,4rem)}
+  .recon{grid-template-columns:1fr;gap:1rem}
+  /* the ledger pins as a compact card at the top; steps scroll clearly beneath it,
+     with a solid backing and a soft edge so text never bleeds into the graphic */
+  .recon-stage{position:sticky;top:calc(var(--nav-h) + 6px);z-index:5;background:var(--paper);padding:.5rem 0 .7rem;box-shadow:0 10px 12px -10px rgba(35,32,33,.45)}
+  .ledger-cols{min-height:0}
+  .lrow{flex-wrap:nowrap;font-size:.68rem;padding:.28rem .4rem}
+  .lrow .s{flex:1 1 auto;min-width:0}
+  .lrow .a{flex:0 0 auto}
+  .mlabel{flex:0 0 auto}
+  .recon-steps{padding-top:.6rem;padding-bottom:10vh}
+  .step{margin:0 0 clamp(2.6rem,16vh,5.5rem);border-left-width:3px;opacity:.6}
+  .step.active{opacity:1}
+  .step .kicker{font-size:.72rem}
+  .step h3{font-size:1.18rem}
+  .step p{font-size:1rem;color:var(--muted)}
 }
 
 /* schedules: horizontal rail */
@@ -824,12 +835,16 @@ html:not(.motion) .hl .was{text-decoration:line-through;text-decoration-color:va
 .lrow .s{flex:1 1 auto;min-width:0}
 .ledger-head{flex-wrap:wrap;gap:.3rem .6rem}
 @media(max-width:480px){
-  .lrow{font-size:.66rem;padding:.26rem .32rem;flex-wrap:wrap;gap:.25rem}
-  .ledger-col{padding:.5rem .45rem .8rem}
-  .lrow .a{font-size:.68rem}
-  .mlabel{font-size:.56rem;padding:.04rem .28rem}
-  .recon-report{padding:.8rem .7rem}
-  .ledger-foot{flex-wrap:wrap;gap:.5rem}
+  /* one line per row, tight, so the pinned ledger stays short and the steps get room */
+  .lrow{font-size:.6rem;padding:.18rem .3rem;margin-bottom:.1rem;flex-wrap:nowrap;gap:.3rem}
+  .ledger-col{padding:.45rem .35rem .5rem}
+  .ledger-col h3{font-size:.6rem;margin-bottom:.35rem}
+  .lrow .a{font-size:.6rem}
+  .mlabel{font-size:.5rem;padding:.02rem .22rem}
+  .ledger-head{padding:.5rem .7rem}
+  .recon-report{padding:.7rem}
+  .recon-report .rrow{font-size:.74rem;padding:.28rem 0}
+  .ledger-foot{flex-wrap:wrap;gap:.5rem;font-size:.7rem;padding:.5rem .7rem}
 }
 </style>
 
@@ -970,18 +985,19 @@ var ANALYTICS_GOATCOUNTER = "";
     if(m > 0) railProg.style.width = (30 + 70 * railOuter.scrollLeft / m) + '%';
   }, {passive:true});
 
-  /* auto-drift: the strip advances by itself; hovering, touching, scrolling or focusing
+  /* auto-drift: the strip advances by itself; touching, dragging, scrolling or focusing
      hands control back to the visitor, then it quietly resumes. It reads left to right,
-     pauses at the end, glides back and starts again. Reduced motion never auto-moves. */
+     pauses at the end, glides back and starts again. Reduced motion never auto-moves.
+     Note: it does NOT pause on hover. On a desktop the cursor naturally rests over the
+     strip, and pausing on hover froze it there (it only ran on touch devices). Only a
+     real interaction pauses it. */
   function autoDrift(el, speed){
     if(!el || !motion) return;
-    var pausedUntil = 0, dir = 1, visible = true, hovering = false, last = null;
+    var pausedUntil = 0, dir = 1, visible = true, last = null;
     function hold(ms){ pausedUntil = Math.max(pausedUntil, performance.now() + ms); }
     ['pointerdown','wheel','touchstart','focusin','keydown'].forEach(function(ev){
       el.addEventListener(ev, function(){ hold(4000); }, {passive:true});
     });
-    el.addEventListener('pointerenter', function(){ hovering = true; }, {passive:true});
-    el.addEventListener('pointerleave', function(){ hovering = false; hold(700); }, {passive:true});
     if('IntersectionObserver' in window){
       new IntersectionObserver(function(es){ visible = es[0].isIntersecting; }, {threshold:.12}).observe(el);
     }
@@ -996,7 +1012,7 @@ var ANALYTICS_GOATCOUNTER = "";
       if(last === null) last = t;
       var dt = Math.min(120, t - last); last = t;
       var max = el.scrollWidth - el.clientWidth;
-      if(visible && !hovering && !document.hidden && max > 10 && t > pausedUntil){
+      if(visible && !document.hidden && max > 10 && t > pausedUntil){
         if(pos === null || Math.abs(el.scrollLeft - pos) > 2) pos = el.scrollLeft; /* adopt manual scrolls */
         pos += dir * (dir > 0 ? speed : speed * 2.5) * dt / 1000;
         pos = Math.max(0, Math.min(max, pos));
