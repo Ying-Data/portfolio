@@ -26,8 +26,14 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,800;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,800;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,800;1,9..144,600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,800;1,9..144,600&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+</noscript>
 
 <script type="application/ld+json">
 {
@@ -67,7 +73,7 @@
 html{
   scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 18px);
   background:var(--paper);color:var(--ink);
-  font-family:'Inter',system-ui,sans-serif;font-size:17px;line-height:1.6;
+  font-family:'General Sans',system-ui,sans-serif;font-size:17px;line-height:1.6;
   -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
 }
 body{overflow-x:hidden}
@@ -85,15 +91,14 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.1
 .skip:focus{left:12px;top:10px}
 
 .wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 clamp(1.2rem,4vw,2.6rem)}
-.section{padding:clamp(3.4rem,7vw,6rem) 0;border-top:1px solid var(--line-soft)}
+/* rhythm comes from spacing and surface changes, not a rule above every section */
+.section{padding:clamp(3.8rem,8vw,7rem) 0}
 
 /* report chrome */
 .masthead{display:flex;flex-wrap:wrap;gap:.35rem 1.4rem;justify-content:center;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .masthead b{color:var(--ink);font-weight:600}
 .rule{border:none;border-top:1px solid var(--line);margin:1.1rem 0}
 .rule-heavy{border:none;border-top:2px solid var(--ink);margin:1.1rem 0}
-.eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.02em;color:var(--muted);margin-bottom:1.1rem}
-.eyebrow .no{font-family:'Fraunces',serif;font-weight:600;color:var(--accent-text);margin-right:.5rem}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .sec-title{font-size:clamp(1.5rem,3.4vw,2.2rem);margin-bottom:.6rem}
 .sec-intro{color:var(--muted);max-width:62ch;margin-bottom:2.4rem;font-size:1rem}
@@ -126,10 +131,12 @@ nav.scrolled{border-bottom:1px solid var(--line)}
 
 /* buttons */
 .btn{display:inline-flex;align-items:center;gap:.45rem;font-weight:600;font-size:.92rem;cursor:pointer;border-radius:3px;transition:background .15s,color .15s,border-color .15s}
+.btn{transition:background .2s,color .2s,border-color .2s,transform .12s}
+.btn:active{transform:scale(.98)}
 .btn-ink{background:var(--ink);color:#fff;padding:.8rem 1.4rem}
 .btn-ink:hover{background:var(--accent-d)}
 .btn-line{border:1.5px solid var(--ink);color:var(--ink);padding:.72rem 1.3rem;background:transparent}
-.btn-line:hover{border-color:var(--accent);color:var(--accent)}
+.btn-line:hover{border-color:var(--accent-d);color:var(--accent-d);background:rgba(224,113,46,.06)}
 .tlink{font-weight:600;color:var(--ink);border-bottom:1.5px solid var(--line);padding-bottom:1px;transition:border-color .15s,color .15s}
 .tlink:hover{border-bottom-color:var(--accent);color:var(--accent-d)}
 
@@ -142,7 +149,25 @@ nav.scrolled{border-bottom:1px solid var(--line)}
 }
 .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center}
 .hero h1{font-size:clamp(1.9rem,5vw,3.1rem);font-weight:800}
-.hero h1 .l2 em{font-style:italic;color:var(--accent-d)}
+.hero h1 em{font-style:italic;color:var(--accent-d)}
+/* hero choreography: masked line rises with a long-tail curve, then the punchline
+   settles out of a blur. Pure CSS: starts at first paint, no library, no late flash.
+   Base state is the FINAL state; animations run only under html.motion. */
+.hline{display:block;overflow:hidden;padding-bottom:.09em;margin-bottom:-.09em}
+.hl-in{display:block}
+.hl-in{animation:hrise 1.05s cubic-bezier(.19,1,.22,1) both}
+.hl-2{animation-delay:.42s}
+.hero h1 em{display:inline-block;animation:hpunch .8s cubic-bezier(.22,1,.36,1) 1.15s both}
+.hero-sub{animation:hsoft .7s cubic-bezier(.25,1,.5,1) 1.5s both}
+.hero-proofline{animation:hsoft .7s cubic-bezier(.25,1,.5,1) 1.62s both}
+.hero-cta{animation:hsoft .7s cubic-bezier(.25,1,.5,1) 1.74s both}
+@keyframes hrise{from{transform:translateY(112%)}to{transform:translateY(0)}}
+@keyframes hpunch{
+  from{opacity:0;filter:blur(7px);letter-spacing:.05em;color:var(--ink)}
+  60%{filter:blur(0);letter-spacing:0}
+  to{opacity:1;filter:blur(0);letter-spacing:0;color:var(--accent-d)}
+}
+@keyframes hsoft{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 .hero-sub{color:var(--muted);max-width:56ch;margin:1.3rem auto 0;font-size:1.02rem}
 .hero-proofline{margin:1.5rem auto 0;font-size:.95rem;color:var(--ink)}
 .hero-proofline b{font-family:'Fraunces',serif}
@@ -150,6 +175,7 @@ nav.scrolled{border-bottom:1px solid var(--line)}
 
 /* financial highlights */
 .highlights{background:var(--paper-deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.hl-title{font-size:clamp(1.05rem,2vw,1.3rem);margin-bottom:1.3rem;font-weight:600}
 .hl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border-left:1px solid var(--line);border-right:1px solid var(--line)}
 .hl{background:var(--paper-deep);padding:1.5rem 1.2rem}
 .hl .v{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.5rem,3vw,2rem);color:var(--ink)}
@@ -160,12 +186,39 @@ nav.scrolled{border-bottom:1px solid var(--line)}
 /* letter */
 .letter{max-width:660px}
 .letter p{margin-bottom:1.1rem}
-.letter .sign{font-family:'Fraunces',serif;font-style:italic;font-size:1.1rem;margin-top:1.4rem}
+.sign-block{display:flex;flex-direction:column;align-items:flex-end;margin-top:1.8rem}
+.letter .sign{font-family:'Fraunces',serif;font-style:italic;font-size:1.05rem;margin:0 0 .3rem}
+/* the signature: seven single-stroke paths (Hershey plotter script, humanized), drawn
+   in real pen order, i-dot last. Hidden-until-drawn only under html.motion, so no-JS
+   and reduced-motion visitors always see the finished signature. */
+.ying-sig{display:block;max-width:190px;width:100%;height:auto;overflow:visible}
+.ying-sig path{fill:none;stroke:var(--ink);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+/* hidden-until-signed only when JS runs (html.sigjs), so no-JS always sees it finished */
+.sigjs .ying-sig path{stroke-dasharray:var(--l);stroke-dashoffset:var(--l)}
+.sigjs .ying-sig.is-signed path{animation:ying-sig-draw var(--d) var(--e) var(--t) forwards}
+@keyframes ying-sig-draw{to{stroke-dashoffset:0}}
 
 /* note 1: reconciliation scrollytell */
-.note1{background:var(--card);border-top:1px solid var(--line)}
-.recon{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(1.4rem,4vw,3.4rem);align-items:start}
-.recon-stage{position:sticky;top:calc(var(--nav-h) + 16px)}
+.note1{background:var(--card)}
+/* the locked stage: under .rv-live the whole scene pins for five beats of scroll and
+   the visitor's scroll drives the match. Without JS or under reduced motion the same
+   markup reads as a plain stacked section, fully visible. */
+.recon-run{position:relative}
+.rv-live .recon-run{height:520svh}
+.rv-live .recon-view{
+  position:sticky;top:0;height:100vh;height:100dvh;overflow:hidden;
+  display:flex;align-items:center
+}
+.rv-wrap{width:100%}
+/* two homes for the heading: inside the lock on desktop, before it on phones,
+   so the locked phone view spends its pixels on the ledger, the step and the charts */
+.rv-head-mobile{display:none}
+.rv-head{max-width:860px;margin-bottom:clamp(.9rem,2vh,1.8rem)}
+.rv-title{font-size:clamp(1.25rem,2.5vw,1.85rem);margin-bottom:.5rem}
+.rv-intro{color:var(--muted);font-size:.95rem;max-width:72ch}
+.rv-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:clamp(1.4rem,3.5vw,3rem);align-items:start}
+.rv-side{min-width:0}
+.rv-fineprint{font-size:.75rem;color:var(--muted);margin-top:.7rem}
 .ledger{
   background:var(--paper);border:1px solid var(--line);overflow:hidden;
   outline:1px solid var(--line-soft);outline-offset:3px
@@ -175,9 +228,9 @@ nav.scrolled{border-bottom:1px solid var(--line)}
 .ledger-cols{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:300px;position:relative}
 .ledger-col{padding:.7rem .7rem 1rem}
 .ledger-col + .ledger-col{border-left:1px dashed var(--line)}
-.ledger-col h3{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.55rem;font-family:'Inter',sans-serif}
+.ledger-col h3{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.55rem;font-family:'General Sans',sans-serif}
 .lrow{
-  display:flex;justify-content:space-between;gap:.5rem;align-items:baseline;
+  display:flex;justify-content:space-between;gap:.5rem;align-items:center;
   font-size:.78rem;padding:.32rem .45rem;border-radius:3px;margin-bottom:.22rem;
   background:var(--card);border:1px solid transparent;transition:background .3s,border-color .3s,opacity .3s,transform .3s
 }
@@ -197,13 +250,24 @@ nav.scrolled{border-bottom:1px solid var(--line)}
 .ledger-foot{display:flex;justify-content:space-between;align-items:center;padding:.6rem .9rem;border-top:1px solid var(--line);font-size:.78rem}
 .ledger-foot .tally{font-weight:700}
 .ledger-foot .tally .num{font-family:'Fraunces',serif}
-.replay{font-size:.78rem;font-weight:600;color:var(--accent-text);border:1.5px solid var(--line);padding:.35rem .7rem;border-radius:3px;transition:border-color .15s}
-.replay:hover{border-color:var(--accent)}
+.replay{
+  font-size:.78rem;font-weight:600;color:var(--accent-text);border:1.5px solid var(--line);
+  padding:.42rem .8rem;border-radius:3px;background:transparent;
+  transition:border-color .2s,background .2s,color .2s,transform .12s
+}
+.replay:hover{border-color:var(--accent-d);background:rgba(224,113,46,.08);color:var(--accent-d)}
+.replay:active{transform:scale(.97)}
 .recon-report{
   position:absolute;inset:0;background:var(--card);padding:1rem 1.2rem;opacity:0;pointer-events:none;transition:opacity .45s
 }
 .recon-report.show{opacity:1;pointer-events:auto}
 .recon-report h3{font-family:'Fraunces',serif;font-size:1rem;font-weight:600;margin-bottom:.6rem;letter-spacing:0;text-transform:none;color:var(--ink)}
+.rr-note{font-size:.78rem;color:var(--muted);margin-top:.8rem}
+@media(max-width:900px){
+  .recon-report{overflow:hidden}
+  .recon-report h3{font-size:.85rem;margin-bottom:.4rem}
+  .rr-note{display:none}
+}
 /* the report assembles line by line out of the dimmed rows beneath it */
 .recon-report .rrow{opacity:0;transform:translateY(5px);transition:opacity .4s ease,transform .4s ease}
 .recon-report.show .rrow{opacity:1;transform:none}
@@ -218,37 +282,106 @@ nav.scrolled{border-bottom:1px solid var(--line)}
 .rrow b{font-weight:600}
 .rrow .num{font-weight:600}
 .rrow.total{border-top:2px solid var(--ink);border-bottom:none;margin-top:.3rem;padding-top:.5rem;font-weight:700}
-.recon-steps{padding-bottom:20vh}
-.step{
-  border-left:2px solid var(--line);padding:.2rem 0 .2rem 1.2rem;margin:0 0 clamp(3rem,18vh,7rem);
-  transition:border-color .3s,opacity .3s;opacity:.45
+.rv-steps{position:relative}
+.step{margin:0 0 2.2rem}
+.rv-live .rv-steps{min-height:11.5rem}
+.rv-live .step{
+  position:absolute;inset:0;margin:0;opacity:0;transform:translateY(16px);pointer-events:none;
+  transition:opacity .55s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.22,1,.36,1)
 }
-.step.active{border-color:var(--accent);opacity:1}
+.rv-live .step.active{opacity:1;transform:none;pointer-events:auto}
 .step .kicker{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-text);margin-bottom:.4rem}
-.step h3{font-size:1.15rem;margin-bottom:.5rem}
-.step p{font-size:.95rem;color:var(--muted)}
+.step h3{font-size:1.2rem;margin-bottom:.5rem}
+.step p{font-size:.98rem;color:var(--muted);max-width:52ch}
 .step p b{color:var(--ink)}
-.method-name{
-  display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin:1.2rem 0 2rem;font-size:.85rem;font-weight:600
+
+/* the report assembles itself as charts: donut = share of value settled, bars = pairs
+   found per tier. Defaults in CSS are the FINISHED state so the section is truthful
+   with no JS; live mode zeroes them and lets scroll do the work. */
+.rv-viz{display:flex;gap:clamp(1rem,2vw,1.8rem);align-items:center;margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid var(--line-soft)}
+.rv-donut{position:relative;flex:0 0 auto;width:clamp(96px,9vw,120px)}
+.rv-donut svg{display:block;width:100%;height:auto;transform:rotate(-90deg)}
+.dtrack{fill:none;stroke:var(--line-soft);stroke-width:11}
+.dseg{fill:none;stroke-width:11;transition:stroke-dasharray .45s cubic-bezier(.25,1,.5,1),stroke-dashoffset .45s cubic-bezier(.25,1,.5,1)}
+.d-exact{stroke:var(--ok);stroke-dasharray:70.5 276.5}
+.d-reason{stroke:var(--accent);stroke-dasharray:199.1 276.5;stroke-dashoffset:-70.5}
+.d-exc{stroke:var(--accent-d);stroke-dasharray:6.9 276.5;stroke-dashoffset:-269.6}
+.dcenter{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.dcenter .num{font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem;line-height:1}
+.dcenter span:last-child{font-size:.62rem;color:var(--muted);max-width:74px;line-height:1.25;margin-top:.2rem}
+.rv-bars{flex:1 1 auto;min-width:0}
+.rbar{margin-bottom:.55rem}
+.rbar .rl{display:flex;justify-content:space-between;gap:.8rem;font-size:.75rem;color:var(--ink);margin-bottom:.25rem}
+.rbar .track{display:block;height:8px;background:var(--paper);border:1px solid var(--line-soft);border-radius:4px;overflow:hidden}
+.rbar .fill{display:block;height:100%;width:100%;border-radius:3px;transform-origin:left;transition:transform .5s cubic-bezier(.25,1,.5,1)}
+.f-exact{background:var(--ok)}
+.f-reason{background:var(--accent)}
+.f-exc{background:var(--accent-d)}
+.rv-diff{font-size:.78rem;color:var(--muted);margin-top:.6rem}
+.rv-diff b{color:var(--ink)}
+
+/* the named method doubles as the stage's progress meter */
+.rv-meter{display:flex;gap:.55rem;margin-top:1.4rem;flex-wrap:wrap}
+.rv-meter .m{
+  display:inline-flex;align-items:center;gap:.45rem;border:1.5px solid var(--line);border-radius:3px;
+  padding:.42rem .85rem;font-size:.82rem;font-weight:600;color:var(--muted);
+  transition:border-color .3s,color .3s,background .3s
 }
-.method-name .m{border:1.5px solid var(--ink);border-radius:3px;padding:.3rem .7rem}
-.method-name .m i{font-style:normal;color:var(--accent-text);font-family:'Fraunces',serif;margin-right:.3rem}
+.rv-meter .m i{font-style:normal;font-family:'Fraunces',serif;color:var(--accent-text)}
+.rv-meter .m.on{border-color:var(--accent-d);color:var(--ink);background:rgba(224,113,46,.07)}
+
 @media(max-width:900px){
-  .recon{grid-template-columns:1fr;gap:1rem}
-  /* the ledger pins as a compact card at the top; steps scroll clearly beneath it,
-     with a solid backing and a soft edge so text never bleeds into the graphic */
-  .recon-stage{position:sticky;top:calc(var(--nav-h) + 6px);z-index:5;background:var(--paper);padding:.5rem 0 .7rem;box-shadow:0 10px 12px -10px rgba(35,32,33,.45)}
+  .rv-grid{grid-template-columns:1fr;gap:.55rem}
+  .rv-live .recon-view{align-items:flex-start;padding-top:calc(var(--nav-h) + 2px)}
+  .rv-head-mobile{display:block;margin-bottom:1.2rem}
+  .rv-head-mobile .rv-title{font-size:clamp(1.15rem,4.8vw,1.45rem)}
+  .rv-head{display:none}
+  .ledger-head{font-size:.6rem;gap:.25rem .5rem}
+  .ledger-head .stamp{font-size:.56rem}
   .ledger-cols{min-height:0}
   .lrow{flex-wrap:nowrap;font-size:.68rem;padding:.28rem .4rem}
   .lrow .s{flex:1 1 auto;min-width:0}
   .lrow .a{flex:0 0 auto}
   .mlabel{flex:0 0 auto}
-  .recon-steps{padding-top:.6rem;padding-bottom:10vh}
-  .step{margin:0 0 clamp(2.6rem,16vh,5.5rem);border-left-width:3px;opacity:.6}
-  .step.active{opacity:1}
-  .step .kicker{font-size:.72rem}
-  .step h3{font-size:1.18rem}
-  .step p{font-size:1rem;color:var(--muted)}
+  .rv-live .rv-steps{min-height:11rem}
+  .step h3{font-size:1rem;margin-bottom:.35rem}
+  .step p{font-size:.85rem;line-height:1.45}
+  .step .kicker{margin-bottom:.25rem}
+  .rv-viz{margin-top:.7rem;padding-top:.6rem;gap:.9rem}
+  .rv-donut{width:82px}
+  .dcenter .num{font-size:.95rem}
+  .dcenter span:last-child{font-size:.54rem;max-width:60px}
+  .rbar{margin-bottom:.4rem}
+  .rbar .rl{font-size:.68rem;margin-bottom:.15rem}
+  .rbar .track{height:6px}
+  .rv-diff{font-size:.7rem;margin-top:.35rem}
+  .rv-meter{display:none}
+  .rv-fineprint{display:none}
+}
+@media(max-width:900px) and (max-height:700px){
+  .rv-viz .rv-bars .rbar .rl{font-size:.68rem}
+  .rv-donut{width:76px}
+  .rv-live .rv-steps{min-height:8.5rem}
+}
+/* landscape phones: two columns again, chrome trimmed, everything fits one lock */
+@media (max-height:480px) and (orientation:landscape){
+  .rv-live .recon-view{align-items:flex-start;padding-top:calc(var(--nav-h) + 4px)}
+  .rv-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:1rem}
+  .rv-head{margin-bottom:.4rem}
+  .rv-title{font-size:.95rem}
+  .rv-live .rv-intro{display:none}
+  .lrow{font-size:.58rem;padding:.16rem .3rem}
+  .ledger-col h3{font-size:.56rem;margin-bottom:.25rem}
+  .ledger-head,.ledger-foot{padding:.4rem .6rem;font-size:.62rem}
+  .rv-live .rv-steps{min-height:6.5rem}
+  .step h3{font-size:.95rem;margin-bottom:.3rem}
+  .step p{font-size:.8rem}
+  .step .kicker{margin-bottom:.2rem;font-size:.62rem}
+  .rv-viz{margin-top:.5rem;padding-top:.5rem}
+  .rv-donut{display:none}
+  .rbar .track{height:6px}
+  .rv-meter{display:none}
+  .rv-fineprint{display:none}
 }
 
 /* schedules: horizontal rail */
@@ -267,12 +400,12 @@ nav.scrolled{border-bottom:1px solid var(--line)}
 .rail{display:flex;gap:clamp(1rem,2.5vw,1.8rem)}
 .panel{
   flex:0 0 auto;width:min(78vw,560px);background:var(--card);
-  border:1px solid var(--line);border-top:2px solid var(--ink);
+  border:1px solid var(--line);
   padding:clamp(1.2rem,2.5vw,1.8rem);display:flex;flex-direction:column;gap:.9rem
 }
 .panel .sched{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-text)}
 .panel .figure{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.5rem,3vw,2rem)}
-.panel .figure .small{display:block;font-family:'Inter',sans-serif;font-weight:500;font-size:.78rem;color:var(--muted);margin-top:.15rem}
+.panel .figure .small{display:block;font-family:'General Sans',sans-serif;font-weight:500;font-size:.78rem;color:var(--muted);margin-top:.15rem}
 .panel h3{font-size:1.15rem}
 .panel p{font-size:.92rem;color:var(--muted)}
 .panel .prepared{font-size:.74rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
@@ -290,7 +423,7 @@ nav.scrolled{border-bottom:1px solid var(--line)}
 }
 
 /* independent opinion */
-.quote{max-width:760px;margin:0 auto;border:1px solid var(--line);border-top:2px solid var(--ink);background:var(--card);padding:clamp(1.4rem,3.5vw,2.2rem)}
+.quote{max-width:760px;margin:0 auto;border:1px solid var(--line);background:var(--card);padding:clamp(1.6rem,3.5vw,2.4rem)}
 .quote .q{font-family:'Fraunces',serif;font-size:clamp(1.1rem,2.4vw,1.4rem);font-style:italic;line-height:1.5}
 .quote .by{display:flex;align-items:center;gap:.6rem;margin-top:1.1rem;flex-wrap:wrap}
 .quote .name{font-weight:700}
@@ -334,7 +467,7 @@ nav.scrolled{border-bottom:1px solid var(--line)}
 .gapchart .src{font-size:.74rem;color:var(--muted);margin-top:.6rem}
 
 /* objections reconciled */
-.obj-table{border:1px solid var(--line);border-top:2px solid var(--ink);overflow:hidden;background:var(--card)}
+.obj-table{border:1px solid var(--line);overflow:hidden;background:var(--card)}
 .obj-row{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1.25fr);gap:0;border-bottom:1px solid var(--line-soft)}
 .obj-row:last-child{border-bottom:none}
 .obj-row > div{padding:1rem 1.1rem}
@@ -352,16 +485,19 @@ nav.scrolled{border-bottom:1px solid var(--line)}
 
 /* facts block */
 .facts{background:var(--paper-deep);border:1px solid var(--line);border-top:2px solid var(--ink);padding:clamp(1.2rem,3vw,1.8rem);position:relative}
-.facts h2{font-size:1.05rem;margin-bottom:1rem}
-.facts dl{display:grid;grid-template-columns:max-content 1fr;gap:.45rem 1.2rem;font-size:.9rem}
-.facts dt{font-weight:700;color:var(--muted);white-space:nowrap}
-.facts dd{margin:0}
+.facts h2{font-size:1.15rem;margin-bottom:.3rem;max-width:30ch}
+.facts-setup{font-size:.88rem;color:var(--muted);margin-bottom:1.5rem}
+.facts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.6rem 2.4rem}
+.fgroup h3{font-family:'General Sans',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-text);margin-bottom:.5rem}
+.fgroup ul{list-style:none}
+.fgroup li{padding:.4rem 0;border-bottom:1px solid var(--line-soft);font-size:.9rem;color:var(--muted);line-height:1.5}
+.fgroup li:last-child{border-bottom:none}
+.fgroup li b{color:var(--ink);font-weight:600}
 .copyfacts{position:absolute;top:1rem;right:1rem;font-size:.75rem;font-weight:600;border:1.5px solid var(--line);border-radius:3px;padding:.3rem .6rem;color:var(--muted);transition:border-color .15s,color .15s}
 .copyfacts:hover{border-color:var(--accent);color:var(--accent-d)}
-@media(max-width:640px){.facts dl{grid-template-columns:1fr}.facts dt{margin-top:.4rem}}
 
 /* NL block */
-.nl-block{max-width:660px;border-left:3px solid var(--accent);padding-left:1.3rem}
+.nl-block{max-width:660px;background:var(--card);border:1px solid var(--line-soft);padding:1.4rem 1.6rem}
 .nl-block h2{font-size:1.05rem;margin-bottom:.6rem}
 .nl-block .stamp{margin-bottom:.8rem}
 .nl-block p{font-size:.98rem;color:var(--muted)}
@@ -380,7 +516,7 @@ nav.scrolled{border-bottom:1px solid var(--line)}
 /* contact */
 .contact-body{max-width:660px}
 .contact-body p{margin-bottom:1.1rem}
-.poles{border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:4px;background:var(--card);padding:1rem 1.2rem;font-size:.95rem;margin:1.4rem 0}
+.poles{background:rgba(224,113,46,.07);border:1px solid var(--line-soft);padding:1.1rem 1.3rem;font-size:.95rem;margin:1.4rem 0}
 .contact-cta{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;margin-top:1.8rem}
 .contact-cta .more{display:flex;gap:1.1rem;font-size:.9rem}
 .contact-cta .more a{color:var(--muted);border-bottom:1.5px solid var(--line);transition:color .15s,border-color .15s}
@@ -388,7 +524,7 @@ nav.scrolled{border-bottom:1px solid var(--line)}
 .cta-note{font-size:.82rem;color:var(--muted);margin-top:.8rem}
 
 /* footer + closing entry */
-footer{border-top:2px solid var(--ink);padding:1.6rem 0 2.2rem;font-size:.85rem;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:1.8rem 0 2.4rem;font-size:.85rem;color:var(--muted)}
 .close-row{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:1rem}
 .close-row .cl{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
 #closeBooks{font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;color:var(--ink);border-bottom:2px solid var(--accent);padding-bottom:1px}
@@ -400,6 +536,11 @@ footer{border-top:2px solid var(--ink);padding:1.6rem 0 2.2rem;font-size:.85rem;
 .egg::backdrop{background:rgba(244,239,231,.97)}
 .egg-inner{max-width:480px;width:100%;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:2rem;box-shadow:0 24px 60px -24px rgba(35,32,33,.35)}
 .egg-inner h3{font-size:1.2rem;margin-bottom:1.1rem}
+.motion dialog.egg[open] .egg-inner{animation:eggin .45s cubic-bezier(.22,1,.36,1) both}
+.motion dialog.egg[open] .egg-line,
+.motion dialog.egg[open] .egg-note{animation:eggline .4s cubic-bezier(.25,1,.5,1) both;animation-delay:calc(.22s + var(--i,0)*.16s)}
+@keyframes eggin{from{transform:translateY(26px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes eggline{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:translateX(0)}}
 .egg-line{display:flex;justify-content:space-between;font-size:.9rem;padding:.45rem 0;border-bottom:1px solid var(--line-soft)}
 .egg-line .num{font-weight:600}
 .egg-line.total{border-top:2px solid var(--ink);border-bottom:none;font-weight:700;margin-top:.4rem;padding-top:.6rem}
@@ -409,9 +550,16 @@ footer{border-top:2px solid var(--ink);padding:1.6rem 0 2.2rem;font-size:.85rem;
 /* reveal primitives: content is ALWAYS visible without JS or motion; JS only adds animation */
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
+/* Reduced motion, applied with judgment rather than a blanket kill. The owner's own
+   desktop runs with the OS animation flag off, and the hero typography, the signature
+   draw and the reconciliation stage are the site's core storytelling: all small,
+   contained, non-vestibular movement. Those stay. What goes under reduced motion:
+   smooth scrolling, decorative reveals, the dialog stagger, and the strike-through. */
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  *,*::before,*::after{animation:none !important;transition:none !important}
+  .egg-inner,.egg-line,.egg-note{animation:none !important}
+  .tally.tick{animation:none !important}
+  .was::after{transition:none !important}
 }
 </style>
 </head>
@@ -421,9 +569,9 @@ footer{border-top:2px solid var(--ink);padding:1.6rem 0 2.2rem;font-size:.85rem;
   <a class="brand" href="#top">Ying Zhao<b>.</b></a>
   <div class="nav-r">
     <a class="link" href="#about">The letter</a>
-    <a class="link" href="#note1">Note 1</a>
+    <a class="link" href="#note1">The two-hour close</a>
     <a class="link" href="#work">The work</a>
-    <a class="link" href="#beyond">The presenter</a>
+    <a class="link" href="#beyond">On stage</a>
     <a class="link" href="#contact">Contact</a>
     <a class="btn-cv" href="CV_Ying_Zhao.pdf" download>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 20h16"/></svg>
@@ -444,8 +592,8 @@ footer{border-top:2px solid var(--ink);padding:1.6rem 0 2.2rem;font-size:.85rem;
       <img src="images/portrait.jpg" alt="Ying Zhao" width="328" height="328" fetchpriority="high">
     </picture></div>
     <h1>
-      <span class="l1">I spent eight years responsible for the number.</span><br>
-      <span class="l2">Now I build the analytics that <em>move it.</em></span>
+      <span class="hline"><span class="hl-in hl-1">I spent eight years responsible for the number.</span></span>
+      <span class="hline"><span class="hl-in hl-2">Now I build the analytics that <em>move it.</em></span></span>
     </h1>
     <p class="hero-sub">Most analyst pages open with a dashboard. Mine opens with the decision. This page is set like the reports I deliver: every figure real, every claim reconciled, one recommendation at the end.</p>
     <p class="hero-proofline num">Latest delivery: a month-end reporting cycle at CN Consult, cut from <b>2 days</b> to <b>2 hours</b>.</p>
@@ -459,7 +607,7 @@ footer{border-top:2px solid var(--ink);padding:1.6rem 0 2.2rem;font-size:.85rem;
 <!-- FINANCIAL HIGHLIGHTS -->
 <section class="highlights" aria-label="Financial highlights">
   <div class="wrap" style="padding-top:clamp(2rem,4vw,3rem);padding-bottom:clamp(2rem,4vw,3rem)">
-    <p class="eyebrow" style="margin-bottom:1.4rem"><span class="no">F01 to F04</span>Findings, before anything else</p>
+    <h2 class="hl-title">Four numbers before a single adjective.</h2>
     <div class="hl-grid">
       <div class="hl"><div class="v num">EUR 2M</div><div class="l">Client book I held at 95% retention, eight years on the commercial side</div></div>
       <div class="hl"><div class="v num">+40%</div><div class="l">EU revenue I helped grow, before I moved into analytics</div></div>
@@ -472,31 +620,45 @@ footer{border-top:2px solid var(--ink);padding:1.6rem 0 2.2rem;font-size:.85rem;
 <!-- LETTER FROM THE OPERATOR -->
 <section class="section" id="about">
   <div class="wrap">
-    <p class="eyebrow"><span class="no">01</span>Letter from the operator</p>
-    <h2 class="sr-only">Letter from the operator</h2>
+    <h2 class="sec-title" style="max-width:20ch">The problem you are actually hiring for</h2>
     <div class="letter">
-      <p>You are reading this because you need reporting that people act on, and most of what you have seen is either a strong analyst who cannot hold a room, or a strong presenter whose numbers do not survive a second question.</p>
-      <p>For eight years I was the person on the hook for the number: a <b class="num">EUR 2M</b> client book held at <b>95% retention</b> while I helped grow EU revenue <b>40%</b>, across sales, supply chain and trade finance. Then I moved inside the machine, into a Belgian accountancy practice, and got tired of waiting on other people's reports. So I learned it myself: SQL, Python, Power BI, and the discipline to publish only numbers I can defend.</p>
-      <p>Most analysts learn the model first and then look for a business to point it at. I did it the other way round. That is the harder order to fake, and the one that needs less ramp time from you.</p>
-      <p class="sign">Ying Zhao, Sint-Niklaas</p>
+      <p>You are not hiring an analyst because you lack dashboards. You have dashboards. You are hiring one because decisions still get made on a gut feeling in a hallway, five metres from a report that answered the wrong question.</p>
+      <p>I spent eight years on the other side of that hallway, holding a <b class="num">EUR 2M</b> client book at <b>95% retention</b> and helping grow EU revenue <b>40%</b>. When a report was late or wrong, the consequences did not land on the analyst. They landed on me.</p>
+      <p>Then I moved to Belgium and started over. I am a Cantonese speaker who learned Dutch and ended up inside a Belgian accountancy practice, where paper invoices lived in ExpertM and digital ones in Odoo, while the BTW deadline had no interest in the difference. I got tired of waiting for other people's reports to tell me what I already suspected. So I taught myself to build them, 1,000+ hours at BeCode deep, until the numbers I published were numbers I could defend.</p>
+      <p>Most analysts learn the model first and then go looking for a business to point it at. I ran the business first. That order is harder to fake, and it means you will not spend my first quarter explaining what a margin is.</p>
+      <p>If any of that sounds like your Monday, keep scrolling. Everything below is proof, not promises.</p>
+      <div class="sign-block">
+        <p class="sign">From my desk in Sint-Niklaas,</p>
+        <div class="ying-sig-wrap">
+          <svg class="ying-sig" viewBox="0 0 194 118" width="194" height="118" role="img" aria-label="Handwritten signature: Ying" xmlns="http://www.w3.org/2000/svg">
+            <path style="--l:179.5;--d:0.200s;--t:0.000s;--e:cubic-bezier(.55,.06,.44,.95);stroke-width:2.7" d="M15.99 28.98 C15.05 28.48 11.70 27.51 10.37 26.01 C9.04 24.51 8.31 21.50 8.00 19.97 C7.69 18.45 7.75 18.44 8.53 16.88 C9.31 15.32 10.83 12.02 12.68 10.61 C14.52 9.20 17.99 8.88 19.60 8.44 C21.22 8.01 20.91 7.43 22.36 8.00 C23.82 8.57 27.02 10.29 28.33 11.88 C29.64 13.47 30.03 15.64 30.22 17.54 C30.42 19.44 30.50 20.28 29.49 23.28 C28.48 26.28 25.95 32.01 24.17 35.53 C22.40 39.04 20.59 40.78 18.87 44.37 C17.14 47.95 14.85 53.93 13.80 57.02 C12.76 60.10 12.40 60.90 12.60 62.87 C12.79 64.84 14.15 67.37 14.95 68.84 C15.74 70.31 16.01 71.16 17.35 71.69 C18.69 72.21 20.84 72.39 22.97 72.00 C25.10 71.61 27.80 70.75 30.14 69.35 C32.47 67.95 34.52 66.09 36.96 63.60 C39.40 61.11 42.74 56.88 44.78 54.41 C46.82 51.94 47.00 52.75 49.21 48.78 C51.42 44.82 56.57 33.65 58.05 30.63"/>
+            <path style="--l:206.4;--d:0.221s;--t:0.270s;--e:cubic-bezier(.4,.12,.6,.94);stroke-width:2.5" d="M68.68 10.44 C67.08 13.93 63.15 22.77 59.03 31.37 C54.91 39.97 48.08 53.97 43.98 62.04 C39.88 70.12 37.48 74.34 34.41 79.82 C31.33 85.31 28.26 90.47 25.52 94.97 C22.77 99.47 20.28 104.41 17.93 106.82 C15.58 109.24 12.95 109.48 11.42 109.43 C9.90 109.39 9.05 108.07 8.77 106.56 C8.50 105.05 8.78 102.83 9.76 100.38 C10.74 97.92 12.62 94.77 14.66 91.82 C16.71 88.87 19.08 85.66 22.03 82.66 C24.98 79.67 28.87 76.26 32.39 73.87 C35.90 71.48 38.49 70.81 43.09 68.31 C47.70 65.82 57.22 60.48 60.04 58.92"/>
+            <path style="--l:131.9;--d:0.160s;--t:0.595s;--e:cubic-bezier(.6,.04,.4,.96);stroke-width:2.6" d="M65.14 58.88 C66.56 56.87 73.85 45.89 73.63 46.83 C73.41 47.77 65.62 60.49 63.81 64.52 C62.00 68.55 62.46 69.52 62.79 71.00 C63.12 72.49 64.92 73.00 65.81 73.42 C66.71 73.84 66.64 73.97 68.14 73.53 C69.64 73.10 73.04 71.79 74.80 70.80 C76.56 69.81 76.85 69.62 78.69 67.60 C80.54 65.58 83.23 61.63 85.87 58.69 C88.50 55.75 91.92 52.03 94.48 49.99 C97.05 47.94 99.66 46.42 101.24 46.45 C102.81 46.47 103.57 49.00 103.92 50.12 C104.27 51.24 104.39 50.70 103.35 53.17 C102.32 55.64 99.47 61.43 97.71 64.94 C95.94 68.45 93.60 72.69 92.78 74.24"/>
+            <path style="--l:96.6;--d:0.128s;--t:0.810s;--e:cubic-bezier(.45,.1,.55,.9);stroke-width:2.45" d="M97.05 63.93 C97.76 62.90 99.35 60.29 101.29 57.76 C103.23 55.23 106.33 50.71 108.68 48.72 C111.03 46.74 113.26 46.25 115.38 45.83 C117.49 45.41 119.87 45.76 121.37 46.21 C122.87 46.66 124.12 47.11 124.38 48.54 C124.65 49.97 123.97 52.25 122.97 54.78 C121.97 57.31 119.27 61.09 118.40 63.72 C117.53 66.35 117.50 69.00 117.75 70.56 C118.00 72.12 119.08 72.73 119.89 73.09 C120.69 73.44 120.99 73.26 122.58 72.69 C124.16 72.12 127.60 70.72 129.41 69.69 C131.22 68.65 131.60 68.45 133.43 66.49 C135.26 64.54 139.24 59.38 140.40 57.96"/>
+            <path style="--l:80.4;--d:0.112s;--t:1.023s;--e:cubic-bezier(.55,.06,.44,.95);stroke-width:2.6" d="M169.43 53.29 C169.10 52.44 168.67 49.56 167.48 48.21 C166.28 46.85 164.23 45.68 162.26 45.16 C160.29 44.63 157.88 44.49 155.66 45.07 C153.45 45.66 150.63 47.54 148.97 48.66 C147.31 49.78 146.98 50.33 145.72 51.79 C144.47 53.25 142.25 55.37 141.42 57.43 C140.59 59.50 140.54 62.09 140.76 64.18 C140.98 66.27 141.50 68.56 142.74 69.99 C143.98 71.43 146.39 72.38 148.22 72.78 C150.06 73.18 151.71 73.06 153.75 72.38 C155.79 71.69 158.81 69.79 160.47 68.68 C162.14 67.58 163.21 66.25 163.75 65.76"/>
+            <path style="--l:167.8;--d:0.190s;--t:1.180s;--e:cubic-bezier(.4,.12,.6,.94);stroke-width:2.5" d="M174.04 45.32 C172.39 48.98 168.81 58.08 164.14 67.27 C159.48 76.47 149.85 93.95 146.04 100.49 C142.22 107.03 143.16 104.99 141.25 106.53 C139.35 108.06 136.08 109.57 134.63 109.72 C133.17 109.87 132.66 108.86 132.53 107.40 C132.39 105.94 132.85 103.52 133.81 100.96 C134.78 98.41 135.86 95.14 138.31 92.07 C140.76 89.01 145.00 85.20 148.53 82.57 C152.05 79.95 156.55 77.93 159.45 76.30 C162.35 74.66 163.23 74.37 165.91 72.75 C168.60 71.13 172.16 69.19 175.58 66.58 C179.00 63.96 184.64 58.66 186.45 57.07"/>
+            <path style="--l:14.9;--d:0.030s;--t:1.570s;--e:cubic-bezier(.6,.04,.4,.96);stroke-width:2.9" d="M79.16 31.71 C79.09 32.16 78.32 33.87 78.74 34.43 C79.16 34.98 81.09 35.52 81.68 35.04 C82.27 34.56 82.65 32.04 82.28 31.55 C81.92 31.05 79.96 31.99 79.49 32.07"/>
+          </svg>
+        </div>
+      </div>
     </div>
   </div>
 </section>
-<!-- NOTE 1: THE TWO-HOUR REPORT -->
+<!-- NOTE 1: THE TWO-HOUR REPORT (locked stage: scrolling drives the match) -->
 <section class="section note1" id="note1">
-  <div class="wrap">
-    <p class="eyebrow"><span class="no">Note 1</span>The Two-Hour Report</p>
-    <h2 class="sec-title">Two systems disagreed about the same invoices. I built the report that settled it.</h2>
-    <p class="sec-intro">At CN Consult, an Antwerp accountancy practice, paper invoices lived in ExpertM and digital invoices lived in Odoo. Two systems, one set of money, and a BTW deadline that does not wait. Below is the matching logic, performed on recreated data. Scroll, or run it yourself.</p>
-    <div class="method-name" aria-label="Method: Reconcile, Reduce, Read">
-      <span style="color:var(--muted);font-weight:600">The method, named:</span>
-      <span class="m"><i>1</i>Reconcile</span>
-      <span class="m"><i>2</i>Reduce</span>
-      <span class="m"><i>3</i>Read</span>
-    </div>
-
-    <div class="recon">
-      <div class="recon-stage">
+  <div class="wrap rv-head-mobile">
+    <h2 class="sec-title rv-title">Two systems disagreed about the same money. Settling it took two days a month, until it took two hours.</h2>
+    <p class="rv-intro">At CN Consult, an Antwerp accountancy practice, paper invoices lived in ExpertM and digital invoices lived in Odoo. Same money, two versions of the truth. Keep scrolling; the match runs itself.</p>
+  </div>
+  <div class="recon-run" id="reconRun">
+  <div class="recon-view">
+  <div class="wrap rv-wrap">
+    <header class="rv-head">
+      <h2 class="sec-title rv-title">Two systems disagreed about the same money. Settling it took two days a month, until it took two hours.</h2>
+      <p class="rv-intro">At CN Consult, an Antwerp accountancy practice, paper invoices lived in ExpertM and digital invoices lived in Odoo. Same money, two versions of the truth. The BTW deadline does not care which one you believe. Below is the matching logic on recreated data: scroll, or press the button and watch it run.</p>
+    </header>
+    <div class="rv-grid">
+      <div class="rv-stage">
         <div class="ledger" id="ledger" aria-label="Invoice reconciliation demonstration, recreated data">
           <div class="ledger-head"><span>Invoice match, month-end</span><span class="st stamp" style="transform:none;padding:.2rem .5rem">Recreated data</span></div>
           <div class="ledger-cols" id="ledgerCols">
@@ -529,7 +691,7 @@ footer{border-top:2px solid var(--ink);padding:1.6rem 0 2.2rem;font-size:.85rem;
               <div class="rrow"><span>Exceptions for a human decision</span><span class="num">2 items, 242,34</span></div>
               <div class="rrow"><span>Unexplained difference</span><span class="num">0,00</span></div>
               <div class="rrow total"><span>Time to this page</span><span class="num">2 hours, was 2 days</span></div>
-              <p style="font-size:.78rem;color:var(--muted);margin-top:.8rem">Every line above traces to a source row. The exceptions are the point: a good match report shows its residue instead of hiding it.</p>
+              <p class="rr-note">Every line above traces to a source row. The exceptions are the point: a good match report shows its residue instead of hiding it.</p>
             </div>
           </div>
           <div class="ledger-foot">
@@ -537,37 +699,65 @@ footer{border-top:2px solid var(--ink);padding:1.6rem 0 2.2rem;font-size:.85rem;
             <button class="replay" id="replayBtn" type="button">Run the match again</button>
           </div>
         </div>
-        <p style="font-size:.76rem;color:var(--muted);margin-top:.7rem">All suppliers and amounts are fabricated. The client's figures stay confidential; the logic is the real thing.</p>
+        <p class="rv-fineprint">All suppliers and amounts are fabricated. The client's figures stay confidential; the logic is the real thing.</p>
       </div>
 
-      <div class="recon-steps" id="reconSteps">
+      <aside class="rv-side">
+      <div class="rv-steps" id="reconSteps">
         <div class="step" data-step="0">
-          <p class="kicker">Step 1, the problem</p>
+          <p class="kicker">Step 1, the disagreement</p>
           <h3>Two systems, one set of money</h3>
           <p>Paper invoices were keyed into <b>ExpertM</b>. Digital invoices flowed into <b>Odoo</b>. Every month they disagreed: same suppliers spelled three ways, duplicates, a payment with no reference. Finding out why took <b>two days</b> of side-by-side checking.</p>
         </div>
         <div class="step" data-step="1">
-          <p class="kicker">Step 2, reconcile</p>
+          <p class="kicker">Step 2, reconcile the easy money</p>
           <h3>Exact matches first, no judgment calls</h3>
           <p>Reference, supplier and amount agree on both sides: matched and set aside. This clears most of the volume in seconds and, more importantly, gets it out of the way of the rows that need attention.</p>
         </div>
         <div class="step" data-step="2">
-          <p class="kicker">Step 3, reconcile the hard rows</p>
+          <p class="kicker">Step 3, reconcile the stubborn rows</p>
           <h3>Fuzzy matches, each with its reason on the label</h3>
           <p>The remainder pairs on rules a reviewer can audit: <b>same amount, supplier name variant</b>. <b>Same amount, date shifted</b>. Nothing matches silently; every pairing carries the reason it was allowed.</p>
         </div>
         <div class="step" data-step="3">
-          <p class="kicker">Step 4, reduce</p>
+          <p class="kicker">Step 4, reduce it to what needs a human</p>
           <h3>What is left is the real work</h3>
           <p>A cash payment with no reference and a duplicate entry stay in the <b>exception queue</b>, flagged for a human decision. A reconciliation that claims one hundred percent is hiding something. This one shows its residue.</p>
         </div>
         <div class="step" data-step="4">
-          <p class="kicker">Step 5, read</p>
+          <p class="kicker">Step 5, read it in one minute</p>
           <h3>One page a partner reads in a minute</h3>
           <p>The output is not a spreadsheet, it is a decision: what matched, what matched with a reason, what needs you, and a difference of <b>0,00</b> once the exceptions are resolved. The cycle that took two days now takes <b>two hours</b>, and the checking became repeatable instead of heroic.</p>
         </div>
       </div>
+
+      <div class="rv-viz" id="rvViz">
+        <div class="rv-donut">
+          <svg viewBox="0 0 104 104" role="img" aria-label="Share of invoice value settled, by match tier">
+            <circle class="dtrack" cx="52" cy="52" r="44"/>
+            <circle class="dseg d-exact" cx="52" cy="52" r="44" id="dExact"/>
+            <circle class="dseg d-reason" cx="52" cy="52" r="44" id="dReason"/>
+            <circle class="dseg d-exc" cx="52" cy="52" r="44" id="dExc"/>
+          </svg>
+          <div class="dcenter"><span class="num" id="dPct">0%</span><span>of value settled</span></div>
+        </div>
+        <div class="rv-bars">
+          <div class="rbar"><span class="rl">Exact <b class="num" id="bExactN">0</b> of 4</span><span class="track"><i class="fill f-exact" id="bExact"></i></span></div>
+          <div class="rbar"><span class="rl">With a reason <b class="num" id="bReasonN">0</b> of 3</span><span class="track"><i class="fill f-reason" id="bReason"></i></span></div>
+          <div class="rbar"><span class="rl">Exceptions <b class="num" id="bExcN">0</b> of 2</span><span class="track"><i class="fill f-exc" id="bExc"></i></span></div>
+          <p class="rv-diff">Unexplained difference: <b class="num" id="rvDiff">9.797,63</b></p>
+        </div>
+      </div>
+
+      <div class="rv-meter" aria-hidden="true">
+        <span class="m" data-phase="0"><i>1</i>Reconcile</span>
+        <span class="m" data-phase="1"><i>2</i>Reduce</span>
+        <span class="m" data-phase="2"><i>3</i>Read</span>
+      </div>
+      </aside>
     </div>
+  </div>
+  </div>
   </div>
 </section>
 
@@ -575,9 +765,8 @@ footer{border-top:2px solid var(--ink);padding:1.6rem 0 2.2rem;font-size:.85rem;
 <section class="section rail-sec" id="work">
   <div class="wrap rail-head">
     <div>
-      <p class="eyebrow"><span class="no">02</span>Schedules to the accounts</p>
-      <h2 class="sec-title">The work, one page each</h2>
-      <p class="sec-intro" style="margin-bottom:0">Paid work first, then three self-directed projects on public data, labelled honestly. Each is written the way I report: the decision, the number, the limit.</p>
+      <h2 class="sec-title">The work, in the order it should be judged</h2>
+      <p class="sec-intro" style="margin-bottom:0">Paid work first. The three self-directed projects on public data come after, labelled as exactly what they are. Each card is written the way I write for clients: the number it moved, and the limit it will not stretch past.</p>
     </div>
     <p class="rail-hint" aria-hidden="true"><span class="bar"><i id="railProg"></i></span></p>
   </div>
@@ -638,9 +827,8 @@ footer{border-top:2px solid var(--ink);padding:1.6rem 0 2.2rem;font-size:.85rem;
 <!-- THE PRESENTER -->
 <section class="section presenter" id="beyond">
   <div class="wrap">
-    <p class="eyebrow"><span class="no">03</span>The presenter</p>
     <h2 class="sec-title">I build the analysis and I present it myself. Nobody translates for me.</h2>
-    <p class="sec-intro">The part of BI nobody screens for is the moment the analyst has to stand up and make a room act. I trained that part deliberately, on real stages, in a country that was new to me. The photos below are from Clusity's Summer Gathering, the women-in-tech community's five-year celebration, where I was one of nine keynote speakers. My talk, "Both.", makes the case that the analyst who can read the room and read the data is the rare, useful one.</p>
+    <p class="sec-intro">Interviews test whether the analysis is right. Nobody tests the moment the analyst has to stand up and make a room act on it. I trained that moment deliberately, on real stages in my second language. The photos below are from Clusity's Summer Gathering, the women-in-tech community's five-year celebration, where I was one of nine keynote speakers. My talk, "Both.", argues that the analyst who can read the room and read the data is the one you keep.</p>
 
     <div class="filmstrip" id="filmstrip" tabindex="0" role="region" aria-label="Speech photos, horizontal scroll">
       <figure class="frame"><img src="images/sp-event.webp" alt="Ying delivering a keynote at Clusity's Summer Gathering, the audience seen from behind" width="1300" height="866"><figcaption class="fcap">Keynote at Clusity's Summer Gathering, delivering "Both."</figcaption></figure>
@@ -670,7 +858,6 @@ footer{border-top:2px solid var(--ink);padding:1.6rem 0 2.2rem;font-size:.85rem;
 <!-- INDEPENDENT OPINION -->
 <section class="section" id="opinion">
   <div class="wrap">
-    <p class="eyebrow"><span class="no">04</span>Reference, on the record</p>
     <h2 class="sr-only">Reference</h2>
     <figure class="quote">
       <p class="q">"When I met Ying, she trembled before she spoke. One year later, I watched her deliver a speech to several hundred people, steady enough to compete for an eloquence title. I have rarely seen anyone climb that fast."</p>
@@ -698,7 +885,6 @@ footer{border-top:2px solid var(--ink);padding:1.6rem 0 2.2rem;font-size:.85rem;
 <!-- OBJECTIONS, RECONCILED -->
 <section class="section" id="objections">
   <div class="wrap">
-    <p class="eyebrow"><span class="no">05</span>Objections, reconciled</p>
     <h2 class="sec-title">The doubts you should have, run through the same matching engine</h2>
     <p class="sec-intro">A reconciliation that hides its exceptions is lying. Same rule applies to a candidate. Here are the four objections a sensible hiring manager raises about me, matched against the record.</p>
     <div class="obj-table">
@@ -729,19 +915,49 @@ footer{border-top:2px solid var(--ink);padding:1.6rem 0 2.2rem;font-size:.85rem;
 <!-- THE FACTS -->
 <section class="section" id="facts">
   <div class="wrap">
-    <p class="eyebrow"><span class="no">06</span>The facts, for forwarding</p>
     <div class="facts">
       <button class="copyfacts" id="copyFacts" type="button">Copy this block</button>
-      <h2>Ying Zhao, BI &amp; Data Analyst</h2>
-      <dl id="factsList">
-        <dt>Location</dt><dd>Sint-Niklaas. Antwerp on-site, Belgium remote. Eligible to work in Belgium.</dd>
-        <dt>Tools</dt><dd>SQL, Power BI, DAX, Power Query, Python (pandas), Excel and VBA, Odoo ERP, ExpertM.</dd>
-        <dt>Proof</dt><dd class="num">Month-end reporting 2 days to 2 hours (CN Consult). 200+ hrs/month saved, ETL 40% faster (Spinewise). EUR 2M book at 95% retention, 8 years commercial.</dd>
-        <dt>Credentials</dt><dd>BeCode AI and ML bootcamp (1,000+ hours), AWS Cloud Practitioner, 2nd at the Accenture hackathon, BA International Business (Coventry, UK).</dd>
-        <dt>Speaking</dt><dd>Keynote speaker, Clusity Summer Gathering 2026 (women in tech). VP of Public Relations, Toastmasters Belgium.</dd>
-        <dt>Languages</dt><dd>English fluent, Dutch professional, Cantonese native, no French.</dd>
-        <dt>Contact</dt><dd>weiying.data@gmail.com &middot; linkedin.com/in/weiying-zhao &middot; github.com/Ying-Data</dd>
-      </dl>
+      <h2>Ying Zhao, BI &amp; Data Analyst: the forwardable version</h2>
+      <p class="facts-setup">One copy button, the whole case. Every number on this list is verified.</p>
+      <div class="facts-grid" id="factsList">
+        <div class="fgroup">
+          <h3>Results</h3>
+          <ul>
+            <li><b class="num">2 days to 2 hours</b>, month-end close at CN Consult.</li>
+            <li><b class="num">200+ hrs/month</b> handed back to the team, Spinewise.</li>
+            <li><b class="num">ETL 40% faster</b>, same rebuild.</li>
+            <li><b class="num">EUR 2M book at 95% retention</b>, 8 years commercial.</li>
+          </ul>
+        </div>
+        <div class="fgroup">
+          <h3>Toolkit</h3>
+          <ul>
+            <li><b>SQL, Power BI</b>, DAX, Power Query.</li>
+            <li><b>Python</b> (pandas), Excel and VBA.</li>
+            <li><b>Odoo ERP and ExpertM</b>, daily drivers at an accountancy practice.</li>
+          </ul>
+        </div>
+        <div class="fgroup">
+          <h3>Credentials and stage</h3>
+          <ul>
+            <li><b class="num">1,000+ hours</b>, BeCode AI and ML bootcamp.</li>
+            <li><b>2nd place</b>, Accenture hackathon.</li>
+            <li>AWS Cloud Practitioner.</li>
+            <li>BA International Business, Coventry, UK.</li>
+            <li><b>Keynote speaker</b>, Clusity Summer Gathering 2026, women in tech.</li>
+            <li><b>VP Public Relations</b>, Toastmasters Belgium.</li>
+          </ul>
+        </div>
+        <div class="fgroup">
+          <h3>Practical</h3>
+          <ul>
+            <li>Sint-Niklaas based. <b>Antwerp on-site, Belgium remote.</b></li>
+            <li>Eligible to work in Belgium.</li>
+            <li><b>English fluent, Dutch professional</b>, Cantonese native, no French.</li>
+            <li>weiying.data@gmail.com &middot; linkedin.com/in/weiying-zhao &middot; github.com/Ying-Data</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -750,7 +966,6 @@ footer{border-top:2px solid var(--ink);padding:1.6rem 0 2.2rem;font-size:.85rem;
 <!-- NL DRAFT: written by Claude, MUST be reviewed by Ying before go-live -->
 <section class="section" id="nl" lang="nl">
   <div class="wrap">
-    <p class="eyebrow"><span class="no">07</span>In het kort</p>
     <div class="nl-block">
       <span class="stamp">Ontwerp, wacht op review</span>
       <h2>Voor wie liever Nederlands leest</h2>
@@ -762,9 +977,8 @@ footer{border-top:2px solid var(--ink);padding:1.6rem 0 2.2rem;font-size:.85rem;
 <!-- MEASURED -->
 <section class="measured" id="measured">
   <div class="wrap section" style="border-top:none">
-    <p class="eyebrow"><span class="no">08</span>This page, measured</p>
-    <h2 class="sec-title">An analyst should instrument her own work too</h2>
-    <p class="sec-intro">This panel reads from my own privacy-first analytics. Real numbers only. The ones that need a fair sample to mean anything stay private until they have one.</p>
+    <h2 class="sec-title">I instrument my own page. You should see what I do to a funnel.</h2>
+    <p class="sec-intro">These cards read from my own privacy-first analytics. If a number looks modest, that is because it is real. Anything that needs a fair sample before it means something stays private until it earns one.</p>
     <div class="m-grid">
       <div class="m-card"><div class="m-v num" id="m-views">live soon</div><div class="m-l"><span class="tagk">Page views</span>counting from go-live</div></div>
       <div class="m-card"><div class="m-v num"><span id="m-time">0s</span></div><div class="m-l"><span class="tagk">Your time on this page</span>this visit, live</div></div>
@@ -777,12 +991,11 @@ footer{border-top:2px solid var(--ink);padding:1.6rem 0 2.2rem;font-size:.85rem;
 <!-- CONTACT -->
 <section class="section" id="contact">
   <div class="wrap">
-    <p class="eyebrow"><span class="no">09</span>Recommendation</p>
-    <h2 class="sec-title">Send me the question your reports keep dodging</h2>
+    <h2 class="sec-title">You already know the question. Nobody in the room could answer it.</h2>
     <div class="contact-body">
-      <p>Why margin slipped. Which customers are about to walk. Why month-end still eats a week. Send the vague version, exactly as it nags you; that is the raw material I work with.</p>
-      <p>You will get back how I would take it from question to decision, in plain language, before you have committed to anything. You find out how I think before you find out what I cost.</p>
-      <div class="poles">I am not for teams who want a prettier chart factory. I am for the manager who is tired of being the one every report gets escalated to, and wants someone who reads the business and ships.</div>
+      <p>Why did margin slip, and why did nobody flag it until the quarter closed? Which customers are already halfway out the door? Send the vague version, exactly as it nags you. Vague is my raw material.</p>
+      <p>You get back how I would take it from question to decision, in plain language, before either of us has committed to anything. You find out how I think before you find out what I cost.</p>
+      <div class="poles">I am not the hire for a prettier chart factory. I am the hire for the manager who is tired of being the one every report escalates to, and who wants an analyst who reads the business, not just the schema.</div>
       <div class="contact-cta">
         <a class="btn btn-ink" href="mailto:weiying.data@gmail.com?subject=A%20question%20my%20reports%20keep%20dodging">Send me the question your reports keep dodging</a>
         <div class="more">
@@ -812,12 +1025,13 @@ footer{border-top:2px solid var(--ink);padding:1.6rem 0 2.2rem;font-size:.85rem;
 <dialog class="egg" id="egg" aria-labelledby="eggTitle">
   <div class="egg-inner">
     <h3 id="eggTitle">Closing entry, this page</h3>
-    <div class="egg-line"><span>Month-end time, credited back</span><span class="num">2 days per cycle</span></div>
-    <div class="egg-line"><span>Hours returned to the team</span><span class="num">200+ /mo, credited</span></div>
-    <div class="egg-line"><span>Exceptions hidden from you</span><span class="num">0</span></div>
-    <div class="egg-line"><span>Claims on this page without a source</span><span class="num">0</span></div>
-    <div class="egg-line total"><span>Difference</span><span class="num">0,00</span></div>
-    <p class="egg-note">Books closed. The stage is for weekends; the numbers stay balanced either way.</p>
+    <div class="egg-line" style="--i:0"><span>Month-end time, credited back</span><span class="num">2 days per cycle</span></div>
+    <div class="egg-line" style="--i:1"><span>Hours returned to the team</span><span class="num">200+ /mo, credited</span></div>
+    <div class="egg-line" style="--i:2"><span>Exceptions hidden from you</span><span class="num">0</span></div>
+    <div class="egg-line" style="--i:3"><span>Claims on this page without a source</span><span class="num">0</span></div>
+    <div class="egg-line" style="--i:4"><span>Noodles consumed during build</span><span class="num">unaudited</span></div>
+    <div class="egg-line total" style="--i:5"><span>Difference</span><span class="num">0,00</span></div>
+    <p class="egg-note" style="--i:6">Books closed. Comedy gets my weekends; it does not get my numbers.</p>
     <button class="btn btn-line egg-close" id="eggClose" type="button">Reopen the ledger</button>
   </div>
 </dialog>
@@ -828,27 +1042,28 @@ footer{border-top:2px solid var(--ink);padding:1.6rem 0 2.2rem;font-size:.85rem;
 html:not(.motion) .hl .was{text-decoration:line-through;text-decoration-color:var(--accent-d);text-decoration-thickness:2px}
 .motion .was::after{content:"";position:absolute;left:0;right:0;top:54%;height:2px;background:var(--accent-d);transform:scaleX(0);transform-origin:left;transition:transform .6s .35s}
 .motion .was.in::after{transform:scaleX(1)}
-.gbar .fill{transition:width 1.1s cubic-bezier(.22,.9,.38,1)}
+.gbar .fill{width:100%;transform:scaleX(0);transform-origin:left;transition:transform 1.1s cubic-bezier(.22,.9,.38,1)}
+html:not(.motion) .gbar .fill{transform:none}
 /* the ledger must shrink with the viewport: grid items need min-width:0 */
 .ledger-col{min-width:0}
 .lrow{min-width:0}
 .lrow .s{flex:1 1 auto;min-width:0}
 .ledger-head{flex-wrap:wrap;gap:.3rem .6rem}
 @media(max-width:480px){
-  /* one line per row, tight, so the pinned ledger stays short and the steps get room */
-  .lrow{font-size:.6rem;padding:.18rem .3rem;margin-bottom:.1rem;flex-wrap:nowrap;gap:.3rem}
-  .ledger-col{padding:.45rem .35rem .5rem}
-  .ledger-col h3{font-size:.6rem;margin-bottom:.35rem}
-  .lrow .a{font-size:.6rem}
-  .mlabel{font-size:.5rem;padding:.02rem .22rem}
-  .ledger-head{padding:.5rem .7rem}
+  /* one line per row, tight, so the locked ledger leaves room for the step and charts */
+  .lrow{font-size:.56rem;padding:.14rem .26rem;margin-bottom:.08rem;flex-wrap:nowrap;gap:.25rem}
+  .ledger-col{padding:.35rem .3rem .4rem}
+  .ledger-col h3{font-size:.56rem;margin-bottom:.28rem}
+  .lrow .a{font-size:.56rem}
+  .mlabel{font-size:.47rem;padding:.02rem .2rem}
+  .ledger-head{padding:.4rem .6rem}
   .recon-report{padding:.7rem}
-  .recon-report .rrow{font-size:.74rem;padding:.28rem 0}
-  .ledger-foot{flex-wrap:wrap;gap:.5rem;font-size:.7rem;padding:.5rem .7rem}
+  .recon-report .rrow{font-size:.72rem;padding:.26rem 0}
+  .ledger-foot{flex-wrap:wrap;gap:.4rem;font-size:.66rem;padding:.4rem .6rem}
+  .replay{font-size:.66rem;padding:.3rem .55rem}
 }
 </style>
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
 <script>
 /* To make "Page views" live: create a free GoatCounter account (goatcounter.com),
    enable public stats, and put the site code below. Until then the card shows a
@@ -943,37 +1158,108 @@ var ANALYTICS_GOATCOUNTER = "";
     }
   }
   var steps = Array.prototype.slice.call(document.querySelectorAll('#reconSteps .step'));
-  /* scroll-position driven, not IntersectionObserver: a fast scroll or an anchor jump
-     can skip an observer's trigger band, and the ledger must never show a stale state */
-  var lastStep = -2, stepTick = false;
-  function stepScroll(){
-    if(stepTick) return; stepTick = true;
-    requestAnimationFrame(function(){
-      stepTick = false;
-      var line = window.innerHeight * 0.55, cur = -1;
-      for(var i = 0; i < steps.length; i++){
-        if(steps[i].getBoundingClientRect().top < line) cur = i;
-      }
-      if(cur !== lastStep){
-        lastStep = cur;
-        steps.forEach(function(s, i){ s.classList.toggle('active', i === cur); });
-        applyStep(Math.max(0, cur));
-      }
-    });
+  var note1 = document.getElementById('note1');
+  var reconRun = document.getElementById('reconRun');
+
+  /* ---------- the signature signs itself when the letter is read ---------- */
+  var sig = document.querySelector('.ying-sig');
+  if(sig && 'IntersectionObserver' in window){
+    document.documentElement.classList.add('sigjs');
+    var sio = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ sig.classList.add('is-signed'); sio.disconnect(); } });
+    }, {threshold: 0.6});
+    sio.observe(sig);
   }
-  window.addEventListener('scroll', stepScroll, {passive:true});
-  window.addEventListener('resize', stepScroll, {passive:true});
-  stepScroll();
-  /* replay: the 5-second hallway demo */
+
+  /* ---------- the charts: the report drawing itself out of the rows ---------- */
+  var DATA = { exactAmt: 2498.84, reasonAmt: 7056.45, excAmt: 242.34, total: 9797.63, C: 276.5 };
+  var viz = {
+    dExact: document.getElementById('dExact'), dReason: document.getElementById('dReason'),
+    dExc: document.getElementById('dExc'), dPct: document.getElementById('dPct'),
+    bExact: document.getElementById('bExact'), bReason: document.getElementById('bReason'),
+    bExc: document.getElementById('bExc'), bExactN: document.getElementById('bExactN'),
+    bReasonN: document.getElementById('bReasonN'), bExcN: document.getElementById('bExcN'),
+    diff: document.getElementById('rvDiff')
+  };
+  function fmtEu(v){
+    var s = Math.max(0, v).toFixed(2);
+    var parts = s.split('.');
+    return parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ',' + parts[1];
+  }
+  /* f runs 0..5 across the locked scroll; each unit is one step of the method */
+  function updateViz(f){
+    if(!viz.dExact) return;
+    var pE = Math.min(1, Math.max(0, f - 1));        /* exact tier fills during step 2 */
+    var pR = Math.min(1, Math.max(0, f - 2));        /* reasoned tier during step 3 */
+    var pX = Math.min(1, Math.max(0, f - 3));        /* exceptions surface during step 4 */
+    var C = DATA.C, T = DATA.total;
+    var lenE = pE * DATA.exactAmt / T * C;
+    var lenR = pR * DATA.reasonAmt / T * C;
+    var lenX = pX * DATA.excAmt / T * C;
+    viz.dExact.style.strokeDasharray = lenE + ' ' + C;
+    viz.dReason.style.strokeDasharray = lenR + ' ' + C;
+    viz.dReason.style.strokeDashoffset = -lenE;
+    viz.dExc.style.strokeDasharray = lenX + ' ' + C;
+    viz.dExc.style.strokeDashoffset = -(lenE + lenR);
+    var settled = pE * DATA.exactAmt + pR * DATA.reasonAmt + pX * DATA.excAmt;
+    viz.dPct.textContent = Math.round(settled / T * 100) + '%';
+    viz.bExact.style.transform = 'scaleX(' + pE + ')';  viz.bExactN.textContent = Math.round(pE * 4);
+    viz.bReason.style.transform = 'scaleX(' + pR + ')'; viz.bReasonN.textContent = Math.round(pR * 3);
+    viz.bExc.style.transform = 'scaleX(' + pX + ')';    viz.bExcN.textContent = Math.round(pX * 2);
+    viz.diff.textContent = fmtEu(T - settled);
+  }
+  var meterChips = Array.prototype.slice.call(document.querySelectorAll('.rv-meter .m'));
+  function setStage(n, f){
+    steps.forEach(function(s, i){ s.classList.toggle('active', i === n); });
+    applyStep(n);
+    updateViz(f);
+    /* Reconcile = steps 1-3, Reduce = step 4, Read = step 5 */
+    var phase = n <= 2 ? 0 : (n === 3 ? 1 : 2);
+    meterChips.forEach(function(c, i){ c.classList.toggle('on', i === phase); });
+  }
+
+  /* ---------- the locked stage: scroll progress drives everything ----------
+     NOT gated on the reduced-motion flag: the lock is core interaction, not garnish,
+     and the owner's own desktop has the OS flag on. State changes are instant under
+     reduced motion (transitions off), which is the correct accessibility trade. */
+  var live = !!reconRun;
+  if(live){
+    note1.classList.add('rv-live');
+    var reconTick = false;
+    function reconScroll(){
+      if(reconTick) return; reconTick = true;
+      requestAnimationFrame(function(){
+        reconTick = false;
+        var total = reconRun.offsetHeight - window.innerHeight;
+        if(total <= 0) return;
+        var p = Math.min(1, Math.max(0, -reconRun.getBoundingClientRect().top / total));
+        var f = p * 5;
+        setStage(Math.min(4, Math.floor(f)), f);
+      });
+    }
+    window.addEventListener('scroll', reconScroll, {passive:true});
+    window.addEventListener('resize', reconScroll, {passive:true});
+    reconScroll();
+  } else {
+    /* static mode: everything visible, charts at their finished values */
+    steps.forEach(function(s){ s.classList.add('active'); });
+    applyStep(4);
+    updateViz(5);
+    meterChips.forEach(function(c){ c.classList.add('on'); });
+  }
+
+  /* replay: the hallway demo, drives the same pipeline the scroll does */
   var replayBtn = document.getElementById('replayBtn');
   var replayIv = null;
   if(replayBtn) replayBtn.addEventListener('click', function(){
     if(replayIv) clearInterval(replayIv);
-    var i = 0; applyStep(0);
+    var f = 0;
+    var dt = motion ? 0.055 : 0.16;
     replayIv = setInterval(function(){
-      i++; applyStep(i);
-      if(i >= 4){ clearInterval(replayIv); replayIv = null; lastStep = -2; }
-    }, motion ? 850 : 350);
+      f = Math.min(5, f + dt);
+      setStage(Math.min(4, Math.floor(f)), f);
+      if(f >= 5){ clearInterval(replayIv); replayIv = null; }
+    }, 33);
   });
 
   /* ---------- the rail and the filmstrip travel on their own, left to right ---------- */
@@ -1036,24 +1322,25 @@ var ANALYTICS_GOATCOUNTER = "";
     var gio = new IntersectionObserver(function(es){
       es.forEach(function(e){
         if(e.isIntersecting){
-          document.querySelectorAll('#gapchart .fill').forEach(function(f){ f.style.width = f.getAttribute('data-w') + '%'; });
+          document.querySelectorAll('#gapchart .fill').forEach(function(f){ f.style.transform = 'scaleX(' + (parseFloat(f.getAttribute('data-w')) / 100) + ')'; });
           gio.unobserve(e.target);
         }
       });
     }, {threshold:.5});
     var gc = document.getElementById('gapchart'); if(gc) gio.observe(gc);
   } else {
-    document.querySelectorAll('#gapchart .fill').forEach(function(f){ f.style.width = f.getAttribute('data-w') + '%'; });
+    document.querySelectorAll('#gapchart .fill').forEach(function(f){ f.style.transform = 'scaleX(' + (parseFloat(f.getAttribute('data-w')) / 100) + ')'; });
   }
 
   /* ---------- facts: copy for forwarding ---------- */
   var copyBtn = document.getElementById('copyFacts');
   if(copyBtn) copyBtn.addEventListener('click', function(){
     var t = 'Ying Zhao, BI & Data Analyst\n';
-    document.querySelectorAll('#factsList dt').forEach(function(dt){
-      t += dt.textContent + ': ' + dt.nextElementSibling.textContent + '\n';
+    document.querySelectorAll('#factsList .fgroup').forEach(function(g){
+      t += '\n' + g.querySelector('h3').textContent.toUpperCase() + '\n';
+      g.querySelectorAll('li').forEach(function(li){ t += li.textContent + '\n'; });
     });
-    t += 'Portfolio: https://ying-data.github.io/portfolio/';
+    t += '\nPortfolio: https://ying-data.github.io/portfolio/';
     function done(){ copyBtn.textContent = 'Copied'; setTimeout(function(){ copyBtn.textContent = 'Copy this block'; }, 1800); }
     if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done, function(){});
   });
@@ -1098,11 +1385,8 @@ var ANALYTICS_GOATCOUNTER = "";
     lastFocus = document.activeElement;
     /* native <dialog>: modal focus containment and Escape come for free */
     if(egg.showModal) egg.showModal(); else egg.setAttribute('open', '');
-    if(motion && typeof gsap !== 'undefined'){
-      /* opacity, not autoAlpha: the close button must stay focusable while fading in */
-      gsap.fromTo('.egg-inner', {y: 26, opacity: 0}, {y: 0, opacity: 1, duration: .4, ease: 'power2.out'});
-      gsap.fromTo('.egg-line, .egg-note', {opacity: 0, x: -12}, {opacity: 1, x: 0, stagger: .22, duration: .35, delay: .25});
-    }
+    /* entrance is pure CSS (.egg-inner / .egg-line keyframes) so it needs no library
+       and the close button stays focusable throughout */
     eggClose.focus();
   }
   function shutEgg(){
@@ -1115,27 +1399,10 @@ var ANALYTICS_GOATCOUNTER = "";
     egg.addEventListener('click', function(e){ if(e.target === egg) shutEgg(); });
   }
 
-  /* ---------- motion layer: only after the CDN scripts arrive; content never waits for it ---------- */
-  function initMotion(){
-    if(!motion || typeof gsap === 'undefined') return;
-
-    /* No smooth-scroll library, deliberately: Lenis fought every programmatic scroll
-       (anchors, back-forward restore, focus jumps) for a glide this page does not need.
-       Native scroll + the CSS scroll-behavior rule handle anchors. Paper does not glide. */
-
-    /* hero: two beats and the punchline, skipped when scripts arrive late so text a
-       visitor is already reading never vanishes and replays */
-    if(performance.now() < 1200){
-      gsap.timeline({defaults:{ease:'power2.out'}})
-        .from('.hero h1 .l1', {y:22, autoAlpha:0, duration:.5}, .1)
-        .from('.hero h1 .l2', {y:22, autoAlpha:0, duration:.5}, '+=.35')
-        .from('.hero h1 .l2 em', {scale:.55, autoAlpha:0, duration:.42, ease:'back.out(2.4)'}, '-=.05');
-    }
-  }
-  (function waitForGsap(n){
-    if(typeof gsap !== 'undefined'){ initMotion(); }
-    else if(n < 100){ setTimeout(function(){ waitForGsap(n + 1); }, 60); }
-  })(0);
+  /* No animation library at all, deliberately. The hero choreography, dialog entrance
+     and signature are CSS; the drift and the reconciliation stage are vanilla JS.
+     No smooth-scroll library either: Lenis fought every programmatic scroll for a
+     glide this page does not need. Paper does not glide. */
 })();
 </script>
 
