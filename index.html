@@ -1161,14 +1161,24 @@ var ANALYTICS_GOATCOUNTER = "";
   var note1 = document.getElementById('note1');
   var reconRun = document.getElementById('reconRun');
 
-  /* ---------- the signature signs itself when the letter is read ---------- */
+  /* ---------- the signature signs itself when the letter is read ----------
+     scroll-position check, not IntersectionObserver: observers stall in background
+     tabs, and the pen must never miss its cue */
   var sig = document.querySelector('.ying-sig');
-  if(sig && 'IntersectionObserver' in window){
+  if(sig){
     document.documentElement.classList.add('sigjs');
-    var sio = new IntersectionObserver(function(es){
-      es.forEach(function(e){ if(e.isIntersecting){ sig.classList.add('is-signed'); sio.disconnect(); } });
-    }, {threshold: 0.6});
-    sio.observe(sig);
+    var sigDone = false;
+    function sigCheck(){
+      if(sigDone) return;
+      var r = sig.getBoundingClientRect();
+      if(r.top < window.innerHeight * 0.85 && r.bottom > 0){
+        sigDone = true;
+        sig.classList.add('is-signed');
+        window.removeEventListener('scroll', sigCheck);
+      }
+    }
+    window.addEventListener('scroll', sigCheck, {passive:true});
+    sigCheck();
   }
 
   /* ---------- the charts: the report drawing itself out of the rows ---------- */
@@ -1225,17 +1235,19 @@ var ANALYTICS_GOATCOUNTER = "";
   var live = !!reconRun;
   if(live){
     note1.classList.add('rv-live');
+    /* timer throttle, NOT requestAnimationFrame: rAF parks in background tabs and in
+       idle render loops, which froze state exactly when it was hardest to notice */
     var reconTick = false;
     function reconScroll(){
       if(reconTick) return; reconTick = true;
-      requestAnimationFrame(function(){
+      setTimeout(function(){
         reconTick = false;
         var total = reconRun.offsetHeight - window.innerHeight;
         if(total <= 0) return;
         var p = Math.min(1, Math.max(0, -reconRun.getBoundingClientRect().top / total));
         var f = p * 5;
         setStage(Math.min(4, Math.floor(f)), f);
-      });
+      }, 16);
     }
     window.addEventListener('scroll', reconScroll, {passive:true});
     window.addEventListener('resize', reconScroll, {passive:true});
